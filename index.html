@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>امیرعلی گل‌چینی | وب‌سایت شخصی</title>
+  <title>امیرعلی گل‌چینی </title>
   
   <!-- فونت وزیرمتن با کشیدگی و کاراکترهای اصلاح‌شده -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -369,7 +369,7 @@
         
         <!-- عکس پرتره ترنسپرنت -->
         <div class="profile-photo-box">
-          <img src="profile.png" alt="امیرعلی گل‌چینی" class="profile-photo" />
+          <img src="profile.webp" alt="امیرعلی گل‌چینی" class="profile-photo" />
         </div>
 
         <!-- اطلاعات و جزییات -->
@@ -436,6 +436,198 @@
   </header>
   <!-- ================== پایان ماژول ۱ ================== -->
 
+  <!-- ======================================================== -->
+  <!-- ماژول ۲: بخش رسالت من (فرهنگی / تجاری)                  -->
+  <!-- ======================================================== -->
+  <style>
+    .mission-section {
+      padding: 20px 0 35px;
+    }
+
+    .mission-card {
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 28px;
+      padding: 38px 42px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+    }
+
+    /* سیستم کنترل جابجایی بین حالت اول و دوم */
+    .mission-mode {
+      display: none; /* در حالت عادی پنهان است */
+    }
+
+    .mission-mode.active {
+      display: block; /* فقط حالتی که active دارد نمایش داده می‌شود */
+    }
+
+    /* برچسب و عنوان */
+    .mission-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 175, 55, 0.12);
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 5px 16px;
+      border-radius: 30px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .mission-title {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 28px;
+      line-height: 1.4;
+    }
+
+    /* چیدمان بلوک‌های متن و عکس */
+    .mission-block {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 28px;
+    }
+
+    .mission-block.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .mission-text {
+      flex: 1.3;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 2;
+      text-align: justify;
+    }
+
+    .mission-text strong {
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    /* استایل اختصاصی عکس‌ها: کرو، کادر طلایی و سایه طلایی */
+    .mission-photo-box {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mission-photo {
+      width: 100%;
+      max-width: 320px;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 20px; /* گوشه‌های کرو */
+      border: 2px solid var(--gold-primary); /* کادر طلایی */
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25); /* سایه نوری طلایی */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: block;
+    }
+
+    .mission-photo:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(212, 175, 55, 0.38);
+    }
+
+    /* انطباق برای گوشی موبایل */
+    @media (max-width: 768px) {
+      .mission-card {
+        padding: 26px 18px;
+        border-radius: 22px;
+      }
+
+      .mission-title {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+
+      .mission-block,
+      .mission-block.reverse {
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 24px;
+      }
+
+      .mission-text {
+        font-size: 0.92rem;
+        line-height: 1.9;
+      }
+
+      .mission-photo {
+        max-width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+
+  <section class="container mission-section">
+    <div class="mission-card">
+
+      <!-- ======================================================= -->
+      <!-- [حالت ۱]: سازمانی، فرهنگی و ارزشی (دارای ۲ عکس)          -->
+      <!-- نکته: برای فعال بودن این حالت، کلمه active در کلاس هست -->
+      <!-- ======================================================= -->
+      <div class="mission-mode active">
+        
+        <span class="mission-badge">★ در سنگر جهاد رسانه‌ای</span>
+        <h2 class="mission-title">رسالت من: هنر متعهد و روایتگری در سنگر رسانه</h2>
+
+        <!-- بخش اول متن + عکس با پدر -->
+        <div class="mission-block">
+          <div class="mission-text">
+            اینجانب امیرعلی گل‌چینی، <strong>فرزند شهید پاسدار عبدالرضا گل‌چینی (شهید بازنشسته جنگ رمضان)</strong>، از سال ۱۳۹۹ مسیر حرفه‌ای خود را در عرصه رسانه، به‌ویژه تدوین ویدیویی و تولیدات تصویری آغاز کردم. رشد در بستر یک خانواده پاسدار و تجربه سال‌ها صبوری در برابر دوری‌ها و شرایط کاری پرمسئولیت پدر، مرا با فرهنگ خدمت، مأموریت‌های جهادی و فضای سازمانی پاسداری مأنوس ساخت و روحیه‌ای وظیفه‌شناس و دغدغه‌مند در من شکل داد.
+          </div>
+          <div class="mission-photo-box">
+            <img src="father.webp" alt="در کنار پدر شهید" class="mission-photo" />
+          </div>
+        </div>
+
+        <!-- بخش دوم متن + عکس با دوربین -->
+        <div class="mission-block reverse">
+          <div class="mission-text">
+            با باور عمیق به ضرورت حضور اثرگذار، استاندارد و خلاقانه در عرصه جهاد رسانه‌ای، همواره کوشیده‌ام تخصص فنی روز و نگاه دقیق بصری را در خدمت تولید آثاری هدفمند، فاخر و امیدآفرین به کار گیرم.
+            امتداد آرمان‌های والای شهدا و کلمات پرمهر پدرم در نامه‌ای که برایم به یادگار گذاشت، انگیزه و پشتوانه اصلی من در تداوم پرقدرت این مسیر، تعهد به خروجی استاندارد و خلق روایت‌های ماندگار بصری است.
+          </div>
+          <div class="mission-photo-box">
+            <img src="camera.webp" alt="امیرعلی گل‌چینی با دوربین" class="mission-photo" />
+          </div>
+        </div>
+
+      </div>
+      <!-- ================= پایان حالت ۱ ================= -->
+
+
+      <!-- ======================================================= -->
+      <!-- [حالت ۲]: تجاری و بازار کار (دارای ۱ عکس با دوربین)       -->
+      <!-- نکته: هر زمان خواستید این حالت فعال شود، کلمه active را -->
+      <!-- به این خط اضافه کنید و از حالت ۱ بردارید               -->
+      <!-- ======================================================= -->
+      <div class="mission-mode">
+        
+        <span class="mission-badge">★ تخصص و نوآوری بصری</span>
+        <h2 class="mission-title">رسالت من: روایتگری بصری با تلفیق هنر و فناوری نوین</h2>
+
+        <!-- متن تجاری + تک‌عکس دوربین -->
+        <div class="mission-block">
+          <div class="mission-text">
+            از سال ۱۳۹۹ مسیر حرفه‌ای خود را در زمینه تدوین سینمایی، کارگردانی تیزرهای تبلیغاتی و مدیریت پروژه‌های تصویری آغاز کرده‌ام. باور من بر این است که یک ویدیوی ماندگار، پیش از هر چیز نیازمند درک درست سناریو، تسلط بر ریتم بصری و تصحیح رنگ چشم‌نواز است.<br><br>
+            در کنار تجربه تدوین و کار با تجهیزات تصویربرداری، ادغام تخصص فیلم‌سازی با ابزارهای پیشرفته هوش مصنوعی به من این توانایی را می‌دهد تا برای برندها و کارفرمایان، ایده‌های خلاقانه را با بالاترین کیفیت، سرعت استاندارد و زیبایی‌شناسی مدرن به تصویر بکشم.
+          </div>
+          <div class="mission-photo-box">
+            <img src="camera.webp" alt="امیرعلی گل‌چینی" class="mission-photo" />
+          </div>
+        </div>
+
+      </div>
+      <!-- ================= پایان حالت ۲ ================= -->
+
+    </div>
+  </section>
+  <!-- ================== پایان ماژول ۲ ================== -->
 
   <!-- ======================================================== -->
   <!-- ماژول ۲: حوزه‌های تخصصی                                  -->
