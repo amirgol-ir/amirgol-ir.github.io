@@ -10,28 +10,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- ========================================== -->
-  <!-- استایل‌ها و طراحی ظاهری سایت (CSS)        -->
-  <!-- ========================================== -->
   <style>
+    /* ======================================================== */
+    /* پالت رنگی: زرشکی، قرمز، طلایی و سفید                    */
+    /* ======================================================== */
     :root {
-      /* رنگ‌بندی زرشکی تیره منطبق بر تصویر پرتره */
-      --bg-dark: #140308;
-      --bg-gradient: radial-gradient(circle at 50% 15%, #350818 0%, #120207 100%);
-      --accent-burgundy: #7a0c28;
-      --accent-crimson: #9f1239;
-      --accent-gold: #c59b27;
+      /* پس‌زمینه زرشکی بسیار تیره و عمیق */
+      --bg-burgundy-deep: #160207;
+      --bg-gradient: radial-gradient(circle at 50% 10%, #3d0514 0%, #160207 100%);
       
-      /* رنگ‌های کارت سفید بالا */
-      --card-bg: #ffffff;
-      --card-title: #0f172a;
-      --card-text: #475569;
-      
-      /* بلوک‌های پایینی */
-      --surface-dark: #220712;
-      --border-dark: #430e22;
-      --text-main: #f8fafc;
-      --text-muted: #cbd5e1;
+      /* رنگ‌های قرمز و زرشکی تأکیدی */
+      --crimson-red: #c51d34;
+      --ruby-red: #e11d48;
+      --dark-burgundy: #59091d;
+
+      /* طیف طلایی سلطنتی */
+      --gold-primary: #d4af37;
+      --gold-light: #f3d078;
+      --gold-gradient: linear-gradient(135deg, #d4af37, #f59e0b);
+
+      /* کارت سفید بالا */
+      --card-white: #ffffff;
+      --text-dark: #0f172a;
+      --text-sub: #475569;
+
+      /* بخش‌های تیره پایین */
+      --surface-dark: #22050f;
+      --border-dark: #4d0a1d;
+      --text-light: #f8fafc;
+      --text-muted: #fda4af;
     }
 
     * {
@@ -42,9 +49,9 @@
     }
 
     body {
-      background: var(--bg-dark);
+      background: var(--bg-burgundy-deep);
       background-image: var(--bg-gradient);
-      color: var(--text-main);
+      color: var(--text-light);
       line-height: 1.8;
       min-height: 100vh;
       overflow-x: hidden;
@@ -56,99 +63,125 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* ماژول ۱: کارت سفید معرفی */
+    /* ======================================================== */
+    /* ماژول ۱: کارت سفید بالا (اطلاعات فردی و عکس ترنسپرنت)    */
+    /* ======================================================== */
     .hero-section {
-      padding: 50px 0 30px;
+      padding: 45px 0 25px;
     }
 
     .white-card {
-      background: var(--card-bg);
-      border-radius: 28px;
-      padding: 36px 40px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      background: var(--card-white);
+      border-radius: 26px;
+      padding: 36px 44px;
+      border: 2px solid rgba(212, 175, 55, 0.35); /* حاشیه طلایی ملایم */
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(197, 29, 52, 0.2);
       display: flex;
       align-items: center;
-      gap: 36px;
+      gap: 40px;
     }
 
+    /* عکس پرتره ترنسپرنت و بدون کادر اضافه */
     .profile-photo-box {
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .profile-photo {
-      width: 175px;
-      height: 175px;
-      border-radius: 22px;
-      object-fit: cover;
+      width: 215px; /* کمی بزرگ‌تر */
+      max-width: 100%;
+      height: auto;
       display: block;
-      border: 3px solid #fecdd3;
-      box-shadow: 0 10px 25px rgba(122, 12, 40, 0.18);
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.18)); /* سایه ملایم طبیعی برای پرتره */
     }
 
+    /* اطلاعات رو‌به‌روی عکس */
     .profile-details {
       flex: 1;
     }
 
     .profile-name {
-      font-size: 2.1rem;
+      font-size: 2.3rem;
       font-weight: 900;
-      color: var(--card-title);
+      color: var(--text-dark);
       margin-bottom: 6px;
+      letter-spacing: -0.5px;
     }
 
     .profile-headline {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--accent-burgundy);
-      margin-bottom: 14px;
+      color: var(--crimson-red);
+      display: inline-block;
+      margin-bottom: 24px;
+      position: relative;
     }
 
-    .profile-description {
-      color: var(--card-text);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      margin-bottom: 22px;
+    .profile-headline::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      right: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--gold-primary);
+      border-radius: 2px;
     }
 
-    .profile-meta-grid {
+    /* لیست اطلاعات و آیکون‌ها */
+    .info-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px 18px;
     }
 
-    .meta-item {
+    .info-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-      color: #334155;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #1e293b;
       font-weight: 600;
     }
 
-    .meta-icon {
-      width: 34px;
-      height: 34px;
+    .info-icon {
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
-      background: #fff1f2;
-      color: var(--accent-burgundy);
+      background: #fff5f7;
+      border: 1px solid #fed7e2;
+      color: var(--crimson-red);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(197, 29, 52, 0.08);
     }
 
-    .meta-icon svg {
-      width: 18px;
-      height: 18px;
+    .info-icon svg {
+      width: 20px;
+      height: 20px;
       fill: currentColor;
     }
 
-    /* عناوین بخش‌های بدنه سایت */
+    .info-value {
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+
+    /* ======================================================== */
+    /* ماژول ۲ و ۳: عناوین و کارت‌های پایینی                      */
+    /* ======================================================== */
     .section-title {
       font-size: 1.5rem;
       font-weight: 800;
@@ -156,6 +189,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      color: var(--gold-light);
     }
 
     .section-title::after {
@@ -165,7 +199,6 @@
       background: var(--border-dark);
     }
 
-    /* ماژول ۲: کارت‌های مهارت */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -177,18 +210,19 @@
       border: 1px solid var(--border-dark);
       padding: 22px;
       border-radius: 18px;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: all 0.25s ease;
     }
 
     .skill-card:hover {
-      border-color: var(--accent-crimson);
-      transform: translateY(-2px);
+      border-color: var(--gold-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.12);
     }
 
     .skill-card h3 {
       font-size: 1.05rem;
       margin-bottom: 8px;
-      color: #fda4af;
+      color: #ffffff;
     }
 
     .skill-card p {
@@ -197,7 +231,6 @@
       line-height: 1.7;
     }
 
-    /* ماژول ۳: کارت‌های نمونه‌کار */
     .works-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -209,17 +242,24 @@
       border: 1px solid var(--border-dark);
       border-radius: 18px;
       overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .work-card:hover {
+      border-color: var(--crimson-red);
+      transform: translateY(-3px);
     }
 
     .work-thumb {
       height: 160px;
-      background: #380b1e;
+      background: #360613;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fda4af;
-      font-size: 0.9rem;
+      color: var(--gold-light);
+      font-size: 0.92rem;
       font-weight: 600;
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .work-content {
@@ -240,17 +280,18 @@
 
     .tag {
       display: inline-block;
-      background: rgba(159, 18, 57, 0.25);
-      color: #fecdd3;
+      background: rgba(197, 29, 52, 0.25);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--gold-light);
       padding: 3px 10px;
       border-radius: 6px;
       font-size: 0.78rem;
       margin-left: 6px;
     }
 
-    /* ماژول ۴: پانویس */
+    /* ماژول ۴: فوتر */
     footer {
-      padding: 40px 0;
+      padding: 35px 0;
       text-align: center;
       font-size: 0.85rem;
       color: #94a3b8;
@@ -258,27 +299,67 @@
       margin-top: 50px;
     }
 
-    /* انطباق برای نمایش در گوشی موبایل */
+    /* ======================================================== */
+    /* بهینه‌سازی ویژه و جمع‌وجور برای گوشی‌های موبایل           */
+    /* ======================================================== */
     @media (max-width: 768px) {
+      .hero-section {
+        padding: 20px 0 15px;
+      }
+
+      .container {
+        padding: 0 14px;
+      }
+
+      /* کادر سفید در گوشی بسیار جمع‌وجورتر و متناسب می‌شود */
       .white-card {
         flex-direction: column;
+        padding: 24px 18px;
+        gap: 16px;
+        border-radius: 20px;
         text-align: center;
-        padding: 30px 20px;
-        gap: 20px;
       }
 
       .profile-photo {
-        width: 140px;
-        height: 140px;
-        margin: 0 auto;
+        width: 145px; /* اندازه کنترل‌شده و متناسب با ابعاد گوشی */
       }
 
-      .profile-meta-grid {
+      .profile-name {
+        font-size: 1.7rem;
+        margin-bottom: 4px;
+      }
+
+      .profile-headline {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+
+      .profile-headline::after {
+        right: 50%;
+        transform: translateX(50%);
+      }
+
+      .info-list {
         grid-template-columns: 1fr;
+        gap: 10px;
       }
 
-      .meta-item {
-        justify-content: center;
+      .info-item {
+        font-size: 0.88rem;
+        justify-content: flex-start;
+        background: #fdf2f4;
+        padding: 8px 12px;
+        border-radius: 12px;
+      }
+
+      .info-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .info-icon svg {
+        width: 17px;
+        height: 17px;
       }
     }
   </style>
@@ -286,42 +367,65 @@
 <body>
 
   <!-- ======================================================== -->
-  <!-- ماژول ۱: کارت سفید مشخصات اصلی (بالای صفحه)             -->
+  <!-- ماژول ۱: کارت سفید معرفی فردی                           -->
   <!-- ======================================================== -->
   <header class="hero-section">
     <div class="container">
       <div class="white-card">
         
-        <!-- تصویر پرتره -->
+        <!-- عکس ترنسپرنت بدون کادر اضافه -->
         <div class="profile-photo-box">
           <img src="profile.png" alt="امیرعلی گل‌چینی" class="profile-photo" />
         </div>
 
-        <!-- متن‌ها و مشخصات رو‌به‌روی عکس -->
+        <!-- اطلاعات فردی و شناسنامه‌ای -->
         <div class="profile-details">
           <h1 class="profile-name">امیرعلی گل‌چینی</h1>
-          <div class="profile-headline">تدوین‌گر | فعال رسانه‌ای | فعال در حوزه هوش مصنوعی</div>
-          
-          <!-- بیوگرافی کوتاه -->
-          <p class="profile-description">
-            تولیدکننده محتوا و روایتگر بصری با تمرکز بر تدوین حرفه‌ای، ایجاد ریتم سینمایی، اصلاح رنگ و به‌کارگیری ابزارهای نسل جدید هوش مصنوعی.
-          </p>
+          <div class="profile-headline">تدوین‌گر | فعال در حوزه هوش مصنوعی</div>
 
-          <!-- ردیف آیکون‌ها و مشخصات تکمیلی -->
-          <div class="profile-meta-grid">
-            <div class="meta-item">
-              <div class="meta-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <!-- لیست اطلاعات همراه با آیکون -->
+          <div class="info-list">
+            
+            <!-- تلفن -->
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
               </div>
-              <span>ایران، تهران</span>
+              <span>تلفن: <span class="info-value">09036178644</span></span>
             </div>
 
-            <div class="meta-item">
-              <div class="meta-icon">
+            <!-- ایمیل -->
+            <div class="info-item">
+              <div class="info-icon">
                 <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
               </div>
-              <span>pv@amiraligolchini.ir</span>
+              <span>ایمیل: <span class="info-value">pv@amiraligolchini.ir</span></span>
             </div>
+
+            <!-- محل زندگی -->
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <span>محل سکونت: کرج</span>
+            </div>
+
+            <!-- وضعیت تاهل -->
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+              <span>وضعیت تاهل: مجرد</span>
+            </div>
+
+            <!-- وضعیت خدمت سربازی -->
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+              </div>
+              <span>خدمت سربازی: دارای کارت پایان خدمت</span>
+            </div>
+
           </div>
 
         </div>
@@ -333,27 +437,27 @@
 
 
   <!-- ======================================================== -->
-  <!-- ماژول ۲: حوزه‌های تخصص و مهارت‌ها                        -->
+  <!-- ماژول ۲: حوزه‌های تخصص                                   -->
   <!-- ======================================================== -->
   <main class="container">
     <section>
       <h2 class="section-title">حوزه‌های تخصصی</h2>
       <div class="skills-grid">
         <div class="skill-card">
-          <h3>تدوین و ریتم بصری</h3>
-          <p>تدوین پروژه‌های ویدیویی، ساخت تیزر، کروماکی و سازماندهی سکانس‌ها در پریمیر پرو.</p>
+          <h3>تدوین فیلم و ریتم بصری</h3>
+          <p>تدوین تخصصی پروژه‌های ویدیویی، ساخت تیزر، کروماکی و سازماندهی سکانس‌ها در پریمیر پرو.</p>
         </div>
         <div class="skill-card">
-          <h3>اصلاح و درجه‌بندی رنگ</h3>
-          <p>تنظیم حس و حال سینمایی، تصحیح نور و رنگ با ابزارهای تخصصی Lumetri.</p>
+          <h3>اصلاح و درجه‌بندی رنگ سینمایی</h3>
+          <p>ایجاد اتمسفر بصری و تصحیح حرفه‌ای نور و رنگ با استفاده از Lumetri Color.</p>
         </div>
         <div class="skill-card">
-          <h3>ابزارهای هوش مصنوعی</h3>
-          <p>تولید صحنه‌های واقع‌گرایانه، کارگردانی حرکت دوربین و ادغام تصاویر هوش مصنوعی در ویدیو.</p>
+          <h3>تولید با هوش مصنوعی</h3>
+          <p>تولید صحنه‌های واقع‌گرایانه، کنترل زاویه و حرکت دوربین و تلفیق خروجی‌های AI در ویدیو.</p>
         </div>
         <div class="skill-card">
-          <h3>موشن و جلوه‌های بصری</h3>
-          <p>ترکیب‌بندی در افترافکتس، متحرک‌سازی المان‌های گرافیکی و روتوسکوپی سوژه.</p>
+          <h3>کامپوزیت و موشن گرافیک</h3>
+          <p>جلوه‌های بصری، روتوسکوپی سوژه و ترکیب‌بندی لایه‌ها در افترافکتس.</p>
         </div>
       </div>
     </section>
@@ -366,35 +470,33 @@
   <!-- ======================================================== -->
   <div class="container">
     <section>
-      <h2 class="section-title">گزیده فعالیت‌ها و نمونه‌کارها</h2>
+      <h2 class="section-title">گزیده نمونه‌کارها</h2>
       <div class="works-grid">
         <div class="work-card">
-          <div class="work-thumb">تیزرهای تبلیغاتی و تجاری</div>
+          <div class="work-thumb">تیزرهای تجاری و محصول</div>
           <div class="work-content">
-            <h3>تیزرهای معرفی و صنعتی</h3>
-            <p>سناریونویسی، تدوین، صداگذاری و اصلاح رنگ پروژه‌های معرفی محصول.</p>
+            <h3>تیزر معرفی محصول</h3>
+            <p>تدوین، صداگذاری و اصلاح رنگ سینمایی جهت معرفی برندها در بستر فضای مجازی.</p>
             <span class="tag">تدوین</span>
-            <span class="tag">تبلیغات</span>
+            <span class="tag">تیزر</span>
           </div>
         </div>
 
         <div class="work-card">
-          <div class="work-thumb">پروژه‌های موشن گرافیک</div>
+          <div class="work-thumb">موشن گرافیک و جلوه‌های ویژه</div>
           <div class="work-content">
-            <h3>موشن گرافیک و روایت داستانی</h3>
-            <p>متحرک‌سازی المان‌های بصری و همگام‌سازی صدا و نریشن.</p>
+            <h3>موشن گرافیک روایی</h3>
+            <p>متحرک‌سازی المان‌های بصری و هماهنگ‌سازی نریشن و افکت‌های صوتی.</p>
             <span class="tag">افترافکتس</span>
-            <span class="tag">ایلاستریتور</span>
           </div>
         </div>
 
         <div class="work-card">
-          <div class="work-thumb">تولیدات هوش مصنوعی تصویری</div>
+          <div class="work-thumb">پروژه‌های سینمایی هوش مصنوعی</div>
           <div class="work-content">
-            <h3>خلق شات‌های سینمایی AI</h3>
-            <p>کارگردانی خروجی‌های هوش مصنوعی با پرامپت‌های حرکتی برای کلیپ‌های مفهومی.</p>
+            <h3>خلق پلان‌های سینمایی AI</h3>
+            <p>طراحی شات‌های حرکتی واقع‌گرایانه و پیوسته با هوش مصنوعی جنراتیو.</p>
             <span class="tag">هوش مصنوعی</span>
-            <span class="tag">سینمایی</span>
           </div>
         </div>
       </div>
@@ -404,11 +506,11 @@
 
 
   <!-- ======================================================== -->
-  <!-- ماژول ۴: پانویس سایت (فوتر)                              -->
+  <!-- ماژول ۴: پانویس (فوتر)                                    -->
   <!-- ======================================================== -->
   <footer>
     <div class="container">
-      <p>© تمامی حقوق محفوظ است — وب‌سایت شخصی امیرعلی گل‌چینی</p>
+      <p>© کلیه حقوق محفوظ است — وب‌سایت شخصی امیرعلی گل‌چینی</p>
     </div>
   </footer>
   <!-- ================== پایان ماژول ۴ ================== -->
