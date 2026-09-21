@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>امیرعلی گل‌چینی | تدوین‌گر ویدیو و فعال رسانه‌ای</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --surface: #131b2e;
+      --surface-hover: #1c2742;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #233054;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Vazirmatn", sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 32px;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #05101e;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      background: var(--surface-hover);
+      border-color: var(--text-muted);
+    }
+    section {
+      padding: 60px 0;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 12px;
+      transition: border-color 0.2s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent);
+    }
+    .skill-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    .skill-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+    .project-thumb {
+      width: 100%;
+      height: 180px;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .project-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-body h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .project-body p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+    }
+    .contact-box p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">امیرعلی گل‌چینی</div>
+        <ul class="nav-links">
+          <li><a href="#about">درباره من</a></li>
+          <li><a href="#skills">مهارت‌ها</a></li>
+          <li><a href="#portfolio">نمونه‌کارها</a></li>
+          <li><a href="#contact">تماس</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="about">
+    <div class="container">
+      <span class="hero-badge">آماده همکاری در پروژه‌های رسانه‌ای و تدوین ویدیو</span>
+      <h1>روایتگری بصری با <span>تدوین و هوش مصنوعی</span></h1>
+      <p>تدوین‌گر ویدیو، فعال رسانه‌ای و طراح محتوا؛ متخصص در تدوین تیزرهای تبلیغاتی، اصلاح رنگ، کامپوزیت و ترکیب ابزارهای هوش مصنوعی تصویری.</p>
+      <div class="btn-group">
+        <a href="#portfolio" class="btn btn-primary">مشاهده نمونه‌کارها</a>
+        <a href="#contact" class="btn btn-outline">ارتباط و همکاری</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">حوزه‌های تخصص</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>تدوین ویدیویی</h3>
+          <p>تدوین تخصصی با ادوبی پریمیر پرو، مدیریت سکانس‌های چندترکه، کروماکی حرفه‌ای و اصلاح رنگ (Lumetri).</p>
+        </div>
+        <div class="skill-card">
+          <h3>کامپوزیت و جلوه‌های بصری</h3>
+          <p>ترکیب‌بندی در افترافکتس، روتوسکوپی سوژه، فوکوس و بلور سینمایی و ساخت موشن‌گرافیک.</p>
+        </div>
+        <div class="skill-card">
+          <h3>تولید با هوش مصنوعی</h3>
+          <p>تولید شات‌های سینمایی با هوش مصنوعی، پرامپت‌نویسی دقیق حرکات دوربین و ارتقای کیفیت تصویر.</p>
+        </div>
+        <div class="skill-card">
+          <h3>طراحی گرافیک</h3>
+          <p>طراحی هویت بصری، پوسترهای تبلیغاتی و المان‌های برداری در فتوشاپ و ایلاستریتور.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="section-title">نمونه‌کارها و پروژه‌ها</h2>
+      <div class="portfolio-grid">
+        <div class="project-card">
+          <div class="project-thumb">پروژه‌های تجاری و تبلیغاتی</div>
+          <div class="project-body">
+            <h3>تیزرهای تبلیغاتی و معرفی محصول</h3>
+            <p>تدوین، صداگذاری، اصلاح رنگ سینمایی و ریتم‌بندی جذاب برای معرفی برندها و محصولات.</p>
+            <div class="tags">
+              <span class="tag">Premiere Pro</span>
+              <span class="tag">Color Grading</span>
+              <span class="tag">تیزر تبلیغاتی</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">موشن گرافیک و کامپوزیت</div>
+          <div class="project-body">
+            <h3>موشن گرافیک دوبعدی داستانی</h3>
+            <p>طراحی کاراکتر و فضاسازی وکتور، انیمیشن دوبعدی و همگام‌سازی با نریشن فارسی.</p>
+            <div class="tags">
+              <span class="tag">After Effects</span>
+              <span class="tag">Illustrator</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">تولیدات هوش مصنوعی تصویری</div>
+          <div class="project-body">
+            <h3>شات‌های سینمایی با هوش مصنوعی</h3>
+            <p>کارگردانی صحنه‌های واقع‌گرایانه با حرکت دوربین پیوسته و تلفیق در پروژه‌های ویدیویی.</p>
+            <div class="tags">
+              <span class="tag">Generative AI</span>
+              <span class="tag">Cinematic Visuals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2 style="margin-bottom: 12px;">شروع همکاری</h2>
+        <p>برای سفارش پروژه تدوین، مشاوره تولید محتوا یا همکاری‌های رسانه‌ای در ارتباط باشید.</p>
+        <div class="btn-group">
+          <a href="mailto:info@amiraligolchini.ir" class="btn btn-primary">ارسال ایمیل</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© تمامی حقوق محفوظ است — امیرعلی گل‌چینی</p>
+    </div>
+  </footer>
+
+</body>
+</html>
