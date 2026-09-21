@@ -1231,17 +1231,17 @@
   <!-- ================== پایان ماژول ۳ ================== -->
   
 <!-- ======================================================== -->
-  <!-- ماژول ۴: تجربه کاری (لولای مکانیکی، چرخش ۳۶۰ و قاب کروم)  -->
+  <!-- ماژول ۴: تجربه کاری (اصلاح کامل فواصل، لولا و مرکزیت)     -->
   <!-- ======================================================== -->
   <style>
-    /* کاهش ارتفاع پیمایش برای اسکرول سریع و روان */
+    /* ارتفاع اسکرول روان */
     .exp-scroll-track {
       position: relative;
-      height: 200vh;
+      height: 250vh;
       background: #110106;
     }
 
-    /* ویوپورت قفل‌شونده تمام‌صفحه */
+    /* ویوپورت قفل‌شونده */
     .exp-sticky-screen {
       position: sticky;
       top: 0;
@@ -1255,7 +1255,7 @@
       perspective: 1200px;
     }
 
-    /* کانواس شبیه‌ساز ذرات غبار */
+    /* ذرات غبار */
     .exp-dust-canvas {
       position: absolute;
       top: 0;
@@ -1266,7 +1266,6 @@
       z-index: 1;
     }
 
-    /* هاله دود و نور پس‌زمینه */
     .exp-smoke-overlay {
       position: absolute;
       top: 0;
@@ -1274,57 +1273,58 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 18% 50%, rgba(159, 18, 57, 0.32) 0%, transparent 60%),
-        radial-gradient(circle at 82% 80%, rgba(212, 175, 55, 0.14) 0%, transparent 65%);
+        radial-gradient(circle at 15% 50%, rgba(159, 18, 57, 0.35) 0%, transparent 60%),
+        radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 65%);
       pointer-events: none;
       z-index: 2;
     }
 
-    /* تیتر بخش با فاصله ایمن از کارت‌ها */
+    /* تیتر بخش با فاصله و حریم ایمن از کارت‌ها */
     .exp-header {
       position: relative;
-      margin-top: 30px;
-      margin-bottom: 20px;
-      z-index: 40;
+      margin-top: 35px;
+      height: 70px;
+      z-index: 50;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .exp-title {
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       font-weight: 900;
       color: #ffffff;
       letter-spacing: -0.5px;
     }
 
     .exp-title-line {
-      width: 95px;
+      width: 100px;
       height: 4px;
       background: linear-gradient(90deg, #d4af37, #e11d48);
       margin: 8px auto 0;
       border-radius: 4px;
     }
 
-    /* کانتینر استیج کارت‌ها و خط نور */
+    /* استیج اصلی در مرکز صفحه */
     .exp-stage-container {
       position: relative;
-      width: 100%;
-      max-width: 940px;
-      height: 440px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
+      width: 860px;
+      max-width: 90vw;
+      height: 380px;
+      z-index: 20;
+      margin: auto 0;
       transform-style: preserve-3d;
-      padding: 0 40px;
-      margin-top: 15px;
     }
 
-    /* خط نور عمودی لیزری */
+    /* خط نور عمودی لیزری (دقیقاً در نقطه صفر چپ استیج) */
     .laser-beam-vertical {
       position: absolute;
-      left: 80px;
-      top: -160px;
-      bottom: -160px;
-      width: 3px;
+      left: 0px;
+      top: -200px;
+      bottom: -200px;
+      width: 4px;
       background: linear-gradient(180deg, 
         transparent 0%, 
         #d4af37 15%, 
@@ -1334,82 +1334,82 @@
       );
       box-shadow: 
         0 0 12px #d4af37,
-        0 0 28px rgba(212, 175, 55, 0.85),
-        0 0 50px rgba(225, 29, 72, 0.7);
-      z-index: 15;
+        0 0 30px rgba(212, 175, 55, 0.9),
+        0 0 55px rgba(225, 29, 72, 0.7);
+      z-index: 35;
       border-radius: 4px;
     }
 
-    /* پوسته نگه‌دارنده هر کارت و لولای متصل به میله */
+    /* کلاف نگه‌دارنده کارت که دقیقاً از روی خط نور شروع می‌شود */
     .exp-card-wrapper {
       position: absolute;
-      left: 80px; /* منطبق بر موقعیت خط نور */
-      right: 40px;
+      left: 0px; /* چسبیده به خط نور */
+      top: 0;
+      width: 100%;
       height: 330px;
-      transform-origin: 0% 50%; /* چرخش لولایی حول خط نور چپ */
+      transform-origin: 0% 50%; /* چرخش لولایی دقیق حول خط نور */
       transform-style: preserve-3d;
       will-change: transform, opacity, filter;
-      transition: filter 0.2s ease-out, opacity 0.2s ease-out;
     }
 
-    /* لولا و بازوی متصل‌کننده کارت به خط لیزر */
+    /* لولای فیزیکی مهارشده روی میله نور */
     .exp-hinge-node {
       position: absolute;
-      left: -20px;
+      left: -8px; /* مرکز حلقه دقیقاً روی میله ۴ پیکسلی می‌افتد */
       top: 50%;
       transform: translateY(-50%);
       display: flex;
       align-items: center;
-      z-index: 25;
+      z-index: 40;
       pointer-events: none;
     }
 
-    /* حلقه لغزنده دور خط لیزر */
     .exp-hinge-ring {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: radial-gradient(circle, #ffffff 30%, #d4af37 70%, #9a7811 100%);
-      box-shadow: 0 0 14px 4px #d4af37, 0 0 25px rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 15px #ffffff, 0 0 25px #d4af37;
       border: 1.5px solid #ffffff;
       flex-shrink: 0;
     }
 
-    /* بازوی رابط فلزی بین حلقه و کارت */
     .exp-hinge-rod {
-      width: 20px;
-      height: 4px;
+      width: 18px;
+      height: 5px;
       background: linear-gradient(90deg, #d4af37, #fef08a);
       box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
       border-radius: 2px;
     }
 
-    /* بدنه شیشه‌ای کارت (Glassmorphism) */
+    /* بدنه شیشه‌ای کارت متصل به لولا */
     .exp-glass-card {
-      width: 100%;
+      margin-right: 0;
+      margin-left: 18px; /* اتصال مستقیم به انتهای میله لولا */
+      width: calc(100% - 18px);
       height: 100%;
-      background: rgba(30, 4, 14, 0.58);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(212, 175, 55, 0.45);
+      background: rgba(26, 4, 12, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(212, 175, 55, 0.5);
       border-radius: 24px;
       padding: 30px 36px;
       box-shadow: 
-        0 25px 55px rgba(0, 0, 0, 0.8), 
-        inset 0 0 25px rgba(212, 175, 55, 0.12);
+        0 25px 60px rgba(0, 0, 0, 0.85), 
+        inset 0 0 30px rgba(212, 175, 55, 0.15);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      backface-visibility: visible; /* نمایش پشت کارت در زمان چرخش بیش از ۹۰ درجه */
+      backface-visibility: hidden; /* عدم تداخل پشت کارت */
     }
 
-    /* هدر کارت */
+    /* بخش هدر کارت و لوگوی کروم */
     .exp-card-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
       padding-bottom: 16px;
     }
 
@@ -1419,14 +1419,11 @@
       gap: 16px;
     }
 
-    /* ======================================================== */
-    /* کادر لوگو با متریال کروم براق و رفلکس متالیک              */
-    /* ======================================================== */
     .exp-logo-frame {
-      width: 60px;
-      height: 60px;
+      width: 58px;
+      height: 58px;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(18, 3, 8, 0.7) 100%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(18, 3, 8, 0.8) 100%);
       position: relative;
       display: flex;
       align-items: center;
@@ -1434,12 +1431,10 @@
       flex-shrink: 0;
       box-shadow: 
         0 10px 22px rgba(0, 0, 0, 0.6),
-        0 0 16px rgba(212, 228, 245, 0.3),
         inset 0 2px 3px rgba(255, 255, 255, 0.8),
         inset 0 -2px 3px rgba(74, 85, 104, 0.6);
     }
 
-    /* قاب کرومی دور کادر */
     .exp-logo-frame::before {
       content: "";
       position: absolute;
@@ -1447,14 +1442,13 @@
       border-radius: 20px;
       background: linear-gradient(135deg, 
         #ffffff 0%, 
-        #94a3b8 22%, 
-        #ffffff 45%, 
-        #475569 68%, 
-        #e2e8f0 88%, 
+        #94a3b8 25%, 
+        #ffffff 50%, 
+        #475569 75%, 
         #ffffff 100%
       );
       z-index: -1;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
 
     .exp-logo-frame img {
@@ -1481,7 +1475,6 @@
       white-space: nowrap;
     }
 
-    /* فهرست اقدامات */
     .exp-bullet-list {
       list-style: none;
       display: flex;
@@ -1508,11 +1501,11 @@
       flex-shrink: 0;
     }
 
-    /* راهنمای اسکرول در پایین */
     .exp-scroll-guide {
-      position: absolute;
-      bottom: 20px;
-      z-index: 40;
+      position: relative;
+      margin-bottom: 25px;
+      height: 30px;
+      z-index: 50;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -1546,11 +1539,10 @@
       100% { opacity: 0; transform: translate(-50%, 10px); }
     }
 
-    /* بهینه‌سازی موبایل */
+    /* مرکزیت دقیق کارت در گوشی موبایل */
     @media (max-width: 768px) {
       .exp-header {
         margin-top: 20px;
-        margin-bottom: 12px;
       }
 
       .exp-title {
@@ -1558,31 +1550,35 @@
       }
 
       .exp-stage-container {
-        padding: 0 12px;
-        height: 380px;
+        width: calc(100% - 30px);
+        max-width: 100%;
+        height: 350px;
+        margin: auto;
       }
 
       .laser-beam-vertical {
-        left: 24px;
+        left: 0px;
       }
 
       .exp-card-wrapper {
-        left: 24px;
-        right: 12px;
-        height: 310px;
+        left: 0px;
+        width: 100%;
+        height: 340px;
+      }
+
+      .exp-glass-card {
+        margin-left: 14px;
+        width: calc(100% - 14px);
+        padding: 20px 16px;
+        border-radius: 20px;
       }
 
       .exp-hinge-node {
-        left: -14px;
+        left: -8px;
       }
 
       .exp-hinge-rod {
         width: 14px;
-      }
-
-      .exp-glass-card {
-        padding: 20px 16px;
-        border-radius: 20px;
       }
 
       .exp-card-header {
@@ -1615,22 +1611,18 @@
   <section class="exp-scroll-track" id="experienceSection">
     <div class="exp-sticky-screen">
       
-      <!-- بستر غبار و نور -->
       <canvas id="expDustCanvas" class="exp-dust-canvas"></canvas>
       <div class="exp-smoke-overlay"></div>
 
-      <!-- تیتر بخش -->
+      <!-- تیتر محافظت‌شده و بدون تداخل -->
       <div class="exp-header">
         <h2 class="exp-title">تجربه کاری</h2>
         <div class="exp-title-line"></div>
       </div>
 
-      <!-- استیج سه‌بعدی کارت‌ها و خط نور -->
+      <!-- استیج کارت‌ها در مرکز صفحه -->
       <div class="exp-stage-container">
-        <!-- خط نور لیزری عمودی -->
         <div class="laser-beam-vertical"></div>
-
-        <!-- کارت‌ها و لولاها توسط اسکریپت در این بخش درج می‌شوند -->
         <div id="expCardsContainer" style="width: 100%; height: 100%; position: relative; transform-style: preserve-3d;"></div>
       </div>
 
@@ -1643,12 +1635,9 @@
     </div>
   </section>
 
-  <!-- جاوااسکریپت کنترل چرخش لولایی ۳۶۰ درجه و ذرات گرد و غبار -->
   <script>
     (function () {
-      // ==========================================================
-      // داده‌های سوابق کاری (با حفظ کامل متن‌ها و ساختار الگوی راهنما)
-      // ==========================================================
+      // داده‌های کامل با حفظ سوابق و بخش آموزشی شما
       var workExperiences = [
         {
           sortYear: 1405,
@@ -1685,12 +1674,10 @@
         }
       ];
 
-      // سورت خودکار از جدیدترین به قدیمی‌ترین
       workExperiences.sort(function (a, b) {
         return b.sortYear - a.sortYear;
       });
 
-      // ساخت المان‌های کارت و لولا
       var container = document.getElementById("expCardsContainer");
       workExperiences.forEach(function (exp, index) {
         var wrapper = document.createElement("div");
@@ -1732,7 +1719,7 @@
       });
 
       // ==========================================================
-      // چرخش ۳۶۰ درجه حول میله، لغزش لولا و فوکوس/بلور سینمایی
+      // محاسبات ریاضی چرخش حول خط نور و فواصل عمودی ۱ کارت کامل
       // ==========================================================
       var section = document.getElementById("experienceSection");
       var cards = document.querySelectorAll(".exp-card-wrapper");
@@ -1745,47 +1732,44 @@
         var progress = Math.max(0, Math.min(1, scrolled / scrollDist));
 
         var activePosition = progress * (totalCards - 1);
+        var CARD_HEIGHT_STEP = 420; // فاصله عمودی: بیش از ۱ کارت کامل
 
         cards.forEach(function (card, i) {
           var diff = i - activePosition;
 
           if (diff <= 0) {
-            // کارت‌های فعال و کارت‌های چرخیده به سمت بالا و عقب
+            // کارت جاری و کارت‌های ردشده به سمت بالا
             var factor = Math.abs(diff);
-            
-            // چرخش بیش از ۹۰ درجه حول محور Y (۱۰۰ درجه به ازای هر کارت)
-            var rotateYAngle = factor * 100;
-            // بالا رفتن کارت و لولا در طول میله عمودی
-            var translateY = -factor * 115;
-            // رفتن به عمق فضا
-            var translateZ = -factor * 220;
-            // مقیاس طبیعی در عمق
-            var scale = Math.max(0.72, 1 - factor * 0.16);
-            // عمق میدان بوکه ملایم (حداکثر ۴ پیکسل برای خوانایی)
-            var blurAmount = Math.min(4, factor * 2.2);
-            var opacity = Math.max(0.35, 1 - factor * 0.35);
+
+            var translateY = -factor * CARD_HEIGHT_STEP; // فاصله کامل به سمت بالا
+            var rotateY = -factor * 110; // چرخش کامل حول لولا به سمت عقب
+            var translateZ = -factor * 300;
+            var blurAmount = factor * 4;
+
+            // محو شدن سریع پیش از رسیدن به حریم عنوان
+            var opacity = Math.max(0, 1 - factor * 1.25);
 
             card.style.transform =
-              "translateY(" + translateY + "px) translateZ(" + translateZ + "px) rotateY(-" + rotateYAngle + "deg) scale(" + scale + ")";
+              "translateY(" + translateY + "px) translateZ(" + translateZ + "px) rotateY(" + rotateY + "deg)";
             card.style.filter = "blur(" + blurAmount + "px)";
             card.style.opacity = opacity;
-            card.style.zIndex = 30 - Math.round(factor * 5);
+            card.style.zIndex = 30 - Math.round(factor * 10);
 
           } else {
-            // کارت‌های در نوبت بعدی (منتظر در پایین با شیب ملایم)
+            // کارت‌های بعدی منتظر در پایین (با فاصله کامل بیش از ۱ کارت)
             var factorNext = diff;
+
+            var translateYWait = factorNext * CARD_HEIGHT_STEP; // فاصله کامل به سمت پایین
             var rotateYWait = factorNext * 45;
-            var translateYWait = factorNext * 95;
-            var translateZWait = -factorNext * 180;
-            var scaleWait = Math.max(0.8, 1 - factorNext * 0.15);
-            var blurNext = Math.min(3.5, factorNext * 2.2);
-            var opacityWait = Math.max(0.3, 1 - factorNext * 0.45);
+            var translateZWait = -factorNext * 250;
+            var blurNext = factorNext * 5;
+            var opacityWait = Math.max(0, 1 - factorNext * 0.8);
 
             card.style.transform =
-              "translateY(" + translateYWait + "px) translateZ(" + translateZWait + "px) rotateY(" + rotateYWait + "deg) scale(" + scaleWait + ")";
+              "translateY(" + translateYWait + "px) translateZ(" + translateZWait + "px) rotateY(" + rotateYWait + "deg)";
             card.style.filter = "blur(" + blurNext + "px)";
             card.style.opacity = opacityWait;
-            card.style.zIndex = 20 - Math.round(factorNext * 5);
+            card.style.zIndex = 10 - Math.round(factorNext * 5);
           }
         });
       }
@@ -1794,13 +1778,11 @@
       window.addEventListener("resize", update3DTimeline);
       update3DTimeline();
 
-      // ==========================================================
-      // رندر ذرات معلق غبار در پس‌زمینه
-      // ==========================================================
+      // رندر ذرات غبار
       var canvas = document.getElementById("expDustCanvas");
       var ctx = canvas.getContext("2d");
       var particles = [];
-      var numParticles = 40;
+      var numParticles = 35;
 
       function resizeCanvas() {
         canvas.width = canvas.parentElement.offsetWidth;
