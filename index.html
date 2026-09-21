@@ -484,7 +484,7 @@
       letter-spacing: -0.3px;
     }
 
-    /* چیدمان بلوک‌ها */
+    /* چیدمان حالت اول (فرهنگی) در دسکتاپ */
     .mission-block {
       display: flex;
       align-items: center;
@@ -494,6 +494,33 @@
 
     .mission-block.reverse {
       flex-direction: row-reverse;
+    }
+
+    /* ساختار هوشمند حالت دوم (تجاری) در دسکتاپ */
+    .mission-commercial-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.85fr;
+      grid-template-areas:
+        "p1 photo"
+        "p2 photo";
+      gap: 18px 36px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .commercial-p1 {
+      grid-area: p1;
+    }
+
+    .commercial-p2 {
+      grid-area: p2;
+    }
+
+    .commercial-photo {
+      grid-area: photo;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     /* جاستیفای بودن کامل متن‌ها */
@@ -530,13 +557,14 @@
       cursor: pointer;
     }
 
-    /* بازگردانی کامل افکت هاله نوری طلایی در زمان رفتن ماوس */
     .mission-photo:hover {
       transform: translateY(-4px);
       box-shadow: 0 16px 35px rgba(212, 175, 55, 0.55);
     }
 
-    /* تنظیمات اختصاصی موبایل */
+    /* ======================================================== */
+    /* تنظیمات اختصاصی موبایل                                  */
+    /* ======================================================== */
     @media (max-width: 768px) {
       .mission-section {
         padding: 45px 0 25px;
@@ -554,7 +582,7 @@
       .mission-title-sub {
         font-size: 1.15rem;
         line-height: 1.6;
-        padding: 0 10px;
+        padding: 0 20px;
       }
 
       .mission-block,
@@ -564,23 +592,36 @@
         margin-bottom: 30px;
       }
 
-      /* حفظ کامل جاستیفای در گوشی با فاصله استاندارد از لبه‌ها */
+      /* فاصله مناسب و شکیل متن‌ها از کناره‌های گوشی */
       .mission-text {
         font-size: 0.95rem;
         line-height: 2;
         text-align: justify;
         text-justify: inter-word;
-        padding: 0 10px;
+        padding: 0 22px; /* فاصله از لبه چپ و راست */
+        box-sizing: border-box;
       }
 
       .mission-photo-box {
         width: 100%;
-        padding: 0 10px;
+        padding: 0 22px;
+        box-sizing: border-box;
       }
 
       .mission-photo {
         max-width: 100%;
         height: auto;
+      }
+
+      /* چیدمان عمودی حالت دوم در موبایل: پاراگراف ۱ -> عکس -> پاراگراف ۲ */
+      .mission-commercial-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "p1"
+          "photo"
+          "p2";
+        gap: 18px;
+        margin-bottom: 30px;
       }
     }
   </style>
@@ -633,13 +674,18 @@
           <span class="mission-title-sub">روایتگری بصری با تلفیق هنر و فناوری نوین</span>
         </div>
 
-        <div class="mission-block">
-          <div class="mission-text">
-            از سال ۱۳۹۹ مسیر حرفه‌ای خود را در زمینه تدوین سینمایی، کارگردانی تیزرهای تبلیغاتی و مدیریت پروژه‌های تصویری آغاز کرده‌ام. باور من بر این است که یک ویدیوی ماندگار، پیش از هر چیز نیازمند درک درست سناریو، تسلط بر ریتم بصری و تصحیح رنگ چشم‌نواز است.<br><br>
-            در کنار تجربه تدوین و کار با تجهیزات تصویربرداری، ادغام تخصص فیلم‌سازی با ابزارهای پیشرفته هوش مصنوعی به من این توانایی را می‌دهد تا برای برندها و کارفرمایان، ایده‌های خلاقانه را با بالاترین کیفیت، سرعت استاندارد و زیبایی‌شناسی مدرن به تصویر بکشم.
+        <!-- چیدمان ترتیبی: پاراگراف اول | تصویر | پاراگراف دوم -->
+        <div class="mission-commercial-grid">
+          <div class="mission-text commercial-p1">
+            از سال ۱۳۹۹ مسیر حرفه‌ای خود را در زمینه تدوین سینمایی، کارگردانی تیزرهای تبلیغاتی و مدیریت پروژه‌های تصویری آغاز کرده‌ام. باور من بر این است که یک ویدیوی ماندگار، پیش از هر چیز نیازمند درک درست سناریو، تسلط بر ریتم بصری و تصحیح رنگ چشم‌نواز است.
           </div>
-          <div class="mission-photo-box">
+
+          <div class="mission-photo-box commercial-photo">
             <img src="camera.webp" alt="امیرعلی گل‌چینی" class="mission-photo" />
+          </div>
+
+          <div class="mission-text commercial-p2">
+            در کنار تجربه تدوین و کار با تجهیزات تصویربرداری، ادغام تخصص فیلم‌سازی با ابزارهای پیشرفته هوش مصنوعی به من این توانایی را می‌دهد تا برای برندها و کارفرمایان، ایده‌های خلاقانه را با بالاترین کیفیت، سرعت استاندارد و زیبایی‌شناسی مدرن به تصویر بکشم.
           </div>
         </div>
 
@@ -649,7 +695,6 @@
     </div>
   </section>
   <!-- ================== پایان ماژول ۲ ================== -->
-
   
   <!-- ======================================================== -->
   <!-- ماژول ۲: حوزه‌های تخصصی                                  -->
