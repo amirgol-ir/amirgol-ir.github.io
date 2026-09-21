@@ -697,32 +697,460 @@
   <!-- ================== پایان ماژول ۲ ================== -->
   
   <!-- ======================================================== -->
-  <!-- ماژول ۲: حوزه‌های تخصصی                                  -->
+  <!-- ماژول ۳: صفحه مهارت‌های تخصصی (تمام‌عرض سفید + سه‌بعدی)   -->
   <!-- ======================================================== -->
-  <main class="container">
-    <section>
-      <h2 class="section-title">حوزه‌های تخصصی</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>تدوین فیلم و ریتم بصری</h3>
-          <p>تدوین تخصصی پروژه‌های ویدیویی، ساخت تیزر، کروماکی و سازماندهی سکانس‌ها در پریمیر پرو.</p>
-        </div>
-        <div class="skill-card">
-          <h3>اصلاح و درجه‌بندی رنگ سینمایی</h3>
-          <p>ایجاد اتمسفر بصری و تصحیح حرفه‌ای نور و رنگ با استفاده از Lumetri Color.</p>
-        </div>
-        <div class="skill-card">
-          <h3>تولید با هوش مصنوعی</h3>
-          <p>تولید صحنه‌های واقع‌گرایانه، کنترل زاویه و حرکت دوربین و تلفیق خروجی‌های AI در ویدیو.</p>
-        </div>
-        <div class="skill-card">
-          <h3>کامپوزیت و موشن گرافیک</h3>
-          <p>جلوه‌های بصری، روتوسکوپی سوژه و ترکیب‌بندی لایه‌ها در افترافکتس.</p>
-        </div>
+  <style>
+    /* بخش تمام‌عرض سفید بدون گوشه‌های گرد */
+    .skills-full-section {
+      width: 100%;
+      background: #ffffff;
+      padding: 70px 0 80px;
+      color: #0f172a;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    /* تیتر بخش */
+    .skills-header-box {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .skills-main-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #160207;
+      letter-spacing: -0.5px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .skills-main-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #c51d34, #d4af37);
+      border-radius: 4px;
+    }
+
+    /* گرید دو ستونه در دسکتاپ برای ۱۰ مهارت */
+    .skills-layout-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px 45px;
+    }
+
+    /* هر ردیف مهارت */
+    .skill-row-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    /* کادر آیکون سه‌بعدی با انیمیشن حرکت به چپ و راست */
+    .skill-3d-icon-wrapper {
+      perspective: 600px;
+      flex-shrink: 0;
+    }
+
+    .skill-3d-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+      animation: iconFloat3D 4s ease-in-out infinite alternate;
+      transform-style: preserve-3d;
+    }
+
+    /* انیمیشن چرخش و معلق بودن در فضا */
+    @keyframes iconFloat3D {
+      0% {
+        transform: rotateY(-14deg) rotateX(6deg) translateY(0);
+      }
+      100% {
+        transform: rotateY(14deg) rotateX(-6deg) translateY(-4px);
+      }
+    }
+
+    /* بخش نام و میله سه‌بعدی */
+    .skill-track-details {
+      flex: 1;
+    }
+
+    .skill-name-percent-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .skill-label-text {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #1e293b;
+    }
+
+    .skill-percent-badge {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #c51d34;
+      background: #fdf2f4;
+      padding: 2px 10px;
+      border-radius: 20px;
+      border: 1px solid #fecdd3;
+    }
+
+    /* شیار توخالی سه‌بعدی میله */
+    .progress-track-3d {
+      width: 100%;
+      height: 18px;
+      background: #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.18), inset 0 -1px 2px rgba(255, 255, 255, 0.8);
+      position: relative;
+    }
+
+    /* حجم پرکننده سه‌بعدی نوار */
+    .progress-bar-fill-3d {
+      width: 0%; /* شروع از صفر */
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #e11d48 0%, #9f1239 60%, #59091d 100%);
+      box-shadow: 0 3px 8px rgba(159, 18, 57, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.5), inset 0 -2px 3px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: width 1.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* رگه نوری بالای استوانه */
+    .progress-bar-fill-3d::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 6px;
+      right: 6px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 4px;
+    }
+
+    /* استایل اختصاصی آیکون‌ها */
+    .icon-pr { background: linear-gradient(135deg, #00005b, #000028); border: 2px solid #9999ff; }
+    .icon-ae { background: linear-gradient(135deg, #00005b, #1b003a); border: 2px solid #cf99ff; }
+    .icon-dv { background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid #ef4444; }
+    .icon-ps { background: linear-gradient(135deg, #001e36, #000d1a); border: 2px solid #31a8ff; }
+    .icon-km { background: linear-gradient(135deg, #ea580c, #c2410c); border: 2px solid #fdba74; }
+    .icon-ai { background: linear-gradient(135deg, #331400, #1a0a00); border: 2px solid #ff9a00; }
+    .icon-gen-video { background: linear-gradient(135deg, #701a75, #4a044e); border: 2px solid #f472b6; }
+    .icon-gen-photo { background: linear-gradient(135deg, #065f46, #022c22); border: 2px solid #34d399; }
+    .icon-gen-music { background: linear-gradient(135deg, #1e1b4b, #0f0e26); border: 2px solid #818cf8; }
+    .icon-cam { background: linear-gradient(135deg, #831843, #500724); border: 2px solid #fb7185; }
+
+    /* واکنش‌گرایی برای موبایل */
+    @media (max-width: 768px) {
+      .skills-full-section {
+        padding: 50px 0 60px;
+      }
+
+      .skills-main-title {
+        font-size: 1.7rem;
+      }
+
+      .skills-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .skill-3d-icon {
+        width: 48px;
+        height: 48px;
+      }
+
+      .skill-label-text {
+        font-size: 0.94rem;
+      }
+
+      .progress-track-3d {
+        height: 16px;
+      }
+    }
+  </style>
+
+  <section class="skills-full-section">
+    <div class="container">
+      
+      <!-- عنوان بخش -->
+      <div class="skills-header-box">
+        <h2 class="skills-main-title">مهارت‌های تخصصی</h2>
       </div>
-    </section>
-  </main>
-  <!-- ================== پایان ماژول ۲ ================== -->
+
+      <!-- ساختار مهارت‌ها و نمودارهای سه‌بعدی -->
+      <div class="skills-layout-grid">
+
+        <!-- ۱. Premiere Pro: ۹۵٪ -->
+        <div class="skill-row-item" data-target="95">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-pr">
+              <svg width="30" height="30" viewBox="0 0 32 32">
+                <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" fill="#9999ff" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="16">Pr</text>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">Premiere Pro</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="95"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۲. AI Photo Generation: ۹۰٪ -->
+        <div class="skill-row-item" data-target="90">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-gen-photo">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#34d399">
+                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5zM12 2l1.2 2.8L16 6l-2.8 1.2L12 10l-1.2-2.8L8 6l2.8-1.2L12 2z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">AI Photo Generation</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="90"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۳. After Effects: ۸۰٪ -->
+        <div class="skill-row-item" data-target="80">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-ae">
+              <svg width="30" height="30" viewBox="0 0 32 32">
+                <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" fill="#cf99ff" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="16">Ae</text>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">After Effects</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="80"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۴. AI Video Generation: ۸۰٪ -->
+        <div class="skill-row-item" data-target="80">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-gen-video">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#f472b6">
+                <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4zm-6.75 11.25L10 13l1.25-2.25L13.5 12l-2.25 3.25zM17 15.5l-3.5-2 3.5-2v4z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">AI Video Generation</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="80"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۵. Photoshop: ۸۰٪ -->
+        <div class="skill-row-item" data-target="80">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-ps">
+              <svg width="30" height="30" viewBox="0 0 32 32">
+                <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" fill="#31a8ff" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="16">Ps</text>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">Photoshop</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="80"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۶. KineMaster: ۷۰٪ -->
+        <div class="skill-row-item" data-target="70">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-km">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v3.25L13.75 8H16l-3.5 4.5L16 16h-2.25L11 12.75V16z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">KineMaster</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="70"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۷. AI Music Generation: ۶۰٪ -->
+        <div class="skill-row-item" data-target="60">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-gen-music">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#818cf8">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm4 8l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">AI Music Generation</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="60"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۸. Illustrator: ۵۵٪ -->
+        <div class="skill-row-item" data-target="55">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-ai">
+              <svg width="30" height="30" viewBox="0 0 32 32">
+                <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" fill="#ff9a00" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="16">Ai</text>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">Illustrator</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="55"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۹. DaVinci Resolve: ۵۰٪ -->
+        <div class="skill-row-item" data-target="50">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-dv">
+              <svg width="28" height="28" viewBox="0 0 24 24">
+                <circle cx="12" cy="7" r="3.5" fill="#ef4444" />
+                <circle cx="7" cy="15" r="3.5" fill="#3b82f6" />
+                <circle cx="17" cy="15" r="3.5" fill="#10b981" />
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">DaVinci Resolve</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="50"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ۱۰. Videography / تصویربرداری: ۵۰٪ -->
+        <div class="skill-row-item" data-target="50">
+          <div class="skill-3d-icon-wrapper">
+            <div class="skill-3d-icon icon-cam">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#fb7185">
+                <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-track-details">
+            <div class="skill-name-percent-bar">
+              <span class="skill-label-text">تصویربرداری / Videography</span>
+              <span class="skill-percent-badge"><span class="counter-val">۰</span>٪</span>
+            </div>
+            <div class="progress-track-3d">
+              <div class="progress-bar-fill-3d" data-target="50"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- جاوااسکریپت ناظر هوشمند (دیلی نیم‌ثانیه‌ای و اجرای اسکرول) -->
+  <script>
+    (function () {
+      function toPersianNum(num) {
+        var pDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        return num.toString().replace(/\d/g, function (d) {
+          return pDigits[d];
+        });
+      }
+
+      var skillObserver = new IntersectionObserver(
+        function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var row = entry.target;
+              observer.unobserve(row); // فقط یک‌بار اجرا می‌شود
+
+              // دیلی دقیق نیم ثانیه (۵۰۰ میلی‌ثانیه)
+              setTimeout(function () {
+                var bar = row.querySelector('.progress-bar-fill-3d');
+                var counterEl = row.querySelector('.counter-val');
+                var target = parseInt(row.getAttribute('data-target'), 10);
+
+                // پر شدن نوار سه‌بعدی
+                bar.style.width = target + '%';
+
+                // شمارش نرم عدد فارسی از صفر تا درصد
+                var current = 0;
+                var step = target / 40;
+                var timer = setInterval(function () {
+                  current += step;
+                  if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                  }
+                  counterEl.textContent = toPersianNum(Math.round(current));
+                }, 28);
+              }, 500);
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      document.querySelectorAll('.skill-row-item').forEach(function (el) {
+        skillObserver.observe(el);
+      });
+    })();
+  </script>
+  <!-- ================== پایان ماژول ۳ ================== -->
 
 
   <!-- ======================================================== -->
