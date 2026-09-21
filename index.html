@@ -438,11 +438,11 @@
   <!-- ================== پایان ماژول ۱ ================== -->
 
 <!-- ======================================================== -->
-  <!-- ماژول ۲: بخش رسالت من (بهینه‌سازی‌شده برای موبایل)       -->
+  <!-- ماژول ۲: بخش رسالت من (نسخه اصلاح‌شده موبایل)            -->
   <!-- ======================================================== -->
   <style>
     .mission-section {
-      padding: 25px 0 35px;
+      padding: 55px 0 35px; /* ایجاد فاصله از کارت سفید بالا */
     }
 
     .mission-card {
@@ -453,7 +453,6 @@
       width: 100%;
     }
 
-    /* سیستم کنترل جابجایی بین دو حالت */
     .mission-mode {
       display: none;
     }
@@ -462,37 +461,47 @@
       display: block;
     }
 
-    /* تیتر طلایی در دسکتاپ */
-    .mission-title {
-      font-size: 1.65rem;
-      font-weight: 900;
-      color: var(--gold-light);
-      margin-bottom: 28px;
-      line-height: 1.4;
-      letter-spacing: -0.4px;
+    /* ساختار تایتل دوخطی */
+    .mission-title-box {
+      text-align: center;
+      margin-bottom: 35px;
     }
 
-    /* چیدمان افقی در دسکتاپ */
+    .mission-title-main {
+      display: block;
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--gold-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .mission-title-sub {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+    }
+
+    /* چیدمان بلوک‌ها در دسکتاپ */
     .mission-block {
       display: flex;
       align-items: center;
       gap: 36px;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
 
     .mission-block.reverse {
       flex-direction: row-reverse;
     }
 
-    /* متن‌های سفید و خوانا */
     .mission-text {
       flex: 1.3;
       color: #ffffff;
-      font-size: 1rem;
+      font-size: 1.02rem;
       line-height: 2.1;
       text-align: justify;
-      overflow-wrap: break-word;
-      word-break: normal;
     }
 
     .highlight-light-red {
@@ -500,7 +509,7 @@
       font-weight: 700;
     }
 
-    /* عکس‌ها با گوشه گرد، کادر و هاله طلایی */
+    /* باکس و ابعاد عکس‌ها */
     .mission-photo-box {
       flex: 0.85;
       display: flex;
@@ -509,65 +518,64 @@
 
     .mission-photo {
       width: 100%;
-      max-width: 320px;
-      height: 210px;
-      object-fit: cover;
-      border-radius: 20px;
-      border: 2px solid var(--gold-primary);
-      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 340px;
+      height: auto; /* حذف ارتفاع ثابت برای جلوگیری از هرگونه کراپ */
       display: block;
-    }
-
-    .mission-photo:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 30px rgba(212, 175, 55, 0.38);
+      border-radius: 22px;
+      border: 2.5px solid var(--gold-primary);
+      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28);
+      transition: transform 0.3s ease;
     }
 
     /* ======================================================== */
-    /* بهینه‌سازی دقیق برای گوشی (تک‌خطی شدن تیتر و رفع بیرون‌زدگی) */
+    /* بهینه‌سازی اختصاصی برای گوشی                            */
     /* ======================================================== */
     @media (max-width: 768px) {
       .mission-section {
-        padding: 15px 0 20px;
+        padding: 45px 0 25px; /* فاصله از کارت سفید در گوشی */
       }
 
-      /* تک‌خطی شدن قطعی تیتر در هر سایز نمایشگر گوشی */
-      .mission-title {
-        font-size: clamp(0.85rem, 3.8vw, 1.15rem);
-        white-space: nowrap;
-        text-align: center;
-        letter-spacing: -0.5px;
-        margin-bottom: 22px;
+      .mission-title-box {
+        margin-bottom: 26px;
+      }
+
+      /* خط اول تایتل */
+      .mission-title-main {
+        font-size: 1.75rem;
+        margin-bottom: 4px;
+      }
+
+      /* خط دوم تایتل */
+      .mission-title-sub {
+        font-size: 1.18rem;
+        line-height: 1.6;
+        padding: 0 10px;
       }
 
       .mission-block,
       .mission-block.reverse {
         flex-direction: column;
-        gap: 16px;
-        margin-bottom: 28px;
-        width: 100%;
+        gap: 18px;
+        margin-bottom: 30px;
       }
 
-      /* حفظ کامل متن داخل عرض مجاز صفحه بدون بیرون‌زدگی */
       .mission-text {
-        font-size: 0.92rem;
-        line-height: 1.95;
+        font-size: 0.95rem;
+        line-height: 2;
         text-align: right;
         text-align-last: right;
-        padding: 0 8px; /* فاصله ایمن از لبه‌های صفحه گوشی */
-        box-sizing: border-box;
+        padding: 0 10px;
       }
 
       .mission-photo-box {
         width: 100%;
-        padding: 0 8px;
-        box-sizing: border-box;
+        padding: 0 10px;
       }
 
+      /* نمایش ۱۰۰٪ کامل عکس در گوشی بدون برش لبه‌ها */
       .mission-photo {
         max-width: 100%;
-        height: 210px;
+        height: auto;
       }
     }
   </style>
@@ -577,13 +585,16 @@
 
       <!-- ======================================================= -->
       <!-- [حالت ۱]: سازمانی، فرهنگی و ارزشی (دارای ۲ عکس)          -->
-      <!-- نکته: کلمه active این حالت را فعال نگه می‌دارد           -->
       <!-- ======================================================= -->
-      <div class="mission-mode">
+      <div class="mission-mode active">
         
-        <h2 class="mission-title">رسالت من: هنر متعهد و روایتگری در سنگر رسانه</h2>
+        <!-- تایتل دوخطی و درشت -->
+        <div class="mission-title-box">
+          <span class="mission-title-main">رسالت من</span>
+          <span class="mission-title-sub">هنر متعهد و روایتگری در سنگر رسانه</span>
+        </div>
 
-        <!-- بخش اول متن + عکس با پدر -->
+        <!-- بلوک اول: متن + عکس پدر -->
         <div class="mission-block">
           <div class="mission-text">
             اینجانب امیرعلی گل‌چینی، <span class="highlight-light-red">فرزند شهید پاسدار عبدالرضا گل‌چینی (شهید بازنشسته جنگ رمضان)</span>، از سال ۱۳۹۹ مسیر حرفه‌ای خود را در عرصه رسانه، به‌ویژه تدوین ویدیویی و تولیدات تصویری آغاز کردم. رشد در بستر یک خانواده پاسدار و تجربه سال‌ها صبوری در برابر دوری‌ها و شرایط کاری پرمسئولیت پدر، مرا با فرهنگ خدمت، مأموریت‌های جهادی و فضای سازمانی پاسداری مأنوس ساخت و روحیه‌ای وظیفه‌شناس و دغدغه‌مند در من شکل داد.
@@ -593,7 +604,7 @@
           </div>
         </div>
 
-        <!-- بخش دوم متن + عکس با دوربین -->
+        <!-- بلوک دوم: متن + عکس دوربین -->
         <div class="mission-block reverse">
           <div class="mission-text">
             با باور عمیق به ضرورت حضور اثرگذار، استاندارد و خلاقانه در عرصه جهاد رسانه‌ای، همواره کوشیده‌ام تخصص فنی روز و نگاه دقیق بصری را در خدمت تولید آثاری هدفمند، فاخر و امیدآفرین به کار گیرم.
@@ -611,11 +622,13 @@
       <!-- ======================================================= -->
       <!-- [حالت ۲]: تجاری و بازار کار (دارای ۱ عکس با دوربین)       -->
       <!-- ======================================================= -->
-      <div class="mission-mode  active">
+      <div class="mission-mode">
         
-        <h2 class="mission-title">رسالت من: روایتگری بصری با تلفیق هنر و فناوری نوین</h2>
+        <div class="mission-title-box">
+          <span class="mission-title-main">رسالت من</span>
+          <span class="mission-title-sub">روایتگری بصری با تلفیق هنر و فناوری نوین</span>
+        </div>
 
-        <!-- متن تجاری + تک‌عکس دوربین -->
         <div class="mission-block">
           <div class="mission-text">
             از سال ۱۳۹۹ مسیر حرفه‌ای خود را در زمینه تدوین سینمایی، کارگردانی تیزرهای تبلیغاتی و مدیریت پروژه‌های تصویری آغاز کرده‌ام. باور من بر این است که یک ویدیوی ماندگار، پیش از هر چیز نیازمند درک درست سناریو، تسلط بر ریتم بصری و تصحیح رنگ چشم‌نواز است.<br><br>
