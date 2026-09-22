@@ -691,6 +691,60 @@
   opacity: 0.75;
 }
 
+
+    @media (max-width: 640px) {
+
+  .card-top-row {
+    grid-template-columns: minmax(0, 1fr) 50px;
+    gap: 10px;
+  }
+
+  .card-logo-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+
+  .card-logo {
+    padding: 6px;
+  }
+
+  .card-role-title {
+    font-size: 0.90rem;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .card-title-area .card-period-tag {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+
+  .card-header-divider {
+    margin: 11px 0 9px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .card-top-row {
+    grid-template-columns: minmax(0, 1fr) 46px;
+    gap: 8px;
+  }
+
+  .card-logo-box {
+    width: 46px;
+    height: 46px;
+  }
+
+  .card-role-title {
+    font-size: 0.84rem;
+  }
+
+  .card-title-area .card-period-tag {
+    font-size: 0.64rem;
+  }
+}
     
   </style>
 </head>
