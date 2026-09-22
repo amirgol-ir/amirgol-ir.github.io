@@ -437,30 +437,129 @@
       }
     }
 
-    @media (max-width: 640px) {
-      :root {
-        --axis-left-pos: 15%;
-        --card-width: 310px;
-        --card-height: 240px;
-      }
-      .card-surface {
-        padding: 16px;
-        border-radius: 16px;
-      }
-      .card-role-title {
-        font-size: 0.95rem;
-      }
-      .card-header-row {
-        flex-direction: column;
-        gap: 6px;
-      }
-      .hud-controls {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        min-width: auto;
-      }
-    }
+   @media (max-width: 640px) {
+
+  :root {
+    /* محور نورانی */
+    --axis-left-pos: 10%;
+
+    /* عرض کارت متناسب با عرض واقعی گوشی */
+    --card-width: min(290px, calc(100vw - 48px));
+
+    /* ارتفاع کارت */
+    --card-height: 230px;
+  }
+
+  /* نمایش تمام‌صفحه مناسب موبایل */
+  .sticky-viewport {
+    height: 100svh;
+    min-height: 100svh;
+    perspective: 1200px;
+  }
+
+  /* خود کارت */
+  .card-hinge-wrapper {
+    width: var(--card-width);
+    height: var(--card-height);
+  }
+
+  /* سطح داخلی کارت */
+  .card-surface {
+    left: 24px;
+    width: calc(var(--card-width) - 24px);
+    height: 100%;
+    padding: 14px 13px;
+    border-radius: 16px;
+  }
+
+  /* عنوان و تاریخ */
+  .card-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .card-role-title {
+    font-size: 0.90rem;
+    line-height: 1.5;
+  }
+
+  .card-period-tag {
+    font-size: 0.70rem;
+    padding: 3px 9px;
+  }
+
+  /* متن‌های داخل کارت */
+  .card-bullet-list {
+    gap: 6px;
+    margin-top: 5px;
+  }
+
+  .bullet-item {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    gap: 8px;
+  }
+
+  .bullet-marker {
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+  }
+
+  /* برچسب پایین کارت */
+  .card-footer-meta {
+    margin-top: 4px;
+  }
+
+  .card-tag-label {
+    font-size: 0.66rem;
+  }
+
+  /* نقطه اتصال به محور */
+  .exp-hinge-node {
+    width: 16px;
+    height: 16px;
+    left: -8px;
+  }
+
+  /* بازوی اتصال */
+  .hinge-connector-arm {
+    width: 21px;
+  }
+}
+
+
+/* گوشی‌های خیلی باریک */
+@media (max-width: 360px) {
+
+  :root {
+    --axis-left-pos: 9%;
+    --card-width: calc(100vw - 42px);
+    --card-height: 225px;
+  }
+
+  .card-surface {
+    padding: 13px 12px;
+  }
+
+  .card-role-title {
+    font-size: 0.84rem;
+  }
+
+  .card-period-tag {
+    font-size: 0.66rem;
+  }
+
+  .bullet-item {
+    font-size: 0.70rem;
+    line-height: 1.48;
+  }
+
+  .card-tag-label {
+    font-size: 0.62rem;
+  }
+}
 
     /* حذف اسکرابر سه‌بعدی */
 .hud-controls {
