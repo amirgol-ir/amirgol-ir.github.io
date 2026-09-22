@@ -1278,5 +1278,104 @@
   </footer>
   <!-- ================== پایان ماژول ۴ ================== -->
 
+<script>
+(function () {
+
+  const section = document.getElementById('work-experience-section');
+  const frame = document.getElementById('workExperienceFrame');
+
+  if (!section || !frame) return;
+
+  let frameDocumentHeight = 0;
+  let ticking = false;
+
+  function measureFrame() {
+    try {
+      const doc = frame.contentDocument;
+
+      if (!doc) return;
+
+      frameDocumentHeight = Math.max(
+        doc.documentElement.scrollHeight,
+        doc.body ? doc.body.scrollHeight : 0
+      );
+
+      section.style.height =
+        Math.max(frameDocumentHeight, window.innerHeight) + 'px';
+
+      syncScroll();
+
+    } catch (error) {
+      console.error('Work Experience Module:', error);
+    }
+  }
+
+  function syncScroll() {
+
+    if (!frameDocumentHeight) return;
+
+    const sectionRect = section.getBoundingClientRect();
+
+    const parentScrollDistance =
+      Math.max(1, section.offsetHeight - window.innerHeight);
+
+    let progress =
+      -sectionRect.top / parentScrollDistance;
+
+    progress = Math.max(0, Math.min(1, progress));
+
+    const iframeScrollDistance =
+      Math.max(0, frameDocumentHeight - frame.clientHeight);
+
+    const targetIframeScroll =
+      progress * iframeScrollDistance;
+
+    try {
+      frame.contentWindow.scrollTo(
+        0,
+        targetIframeScroll
+      );
+    } catch (error) {
+      console.error('Work Experience Scroll:', error);
+    }
+  }
+
+  function requestSync() {
+
+    if (ticking) return;
+
+    ticking = true;
+
+    requestAnimationFrame(function () {
+      syncScroll();
+      ticking = false;
+    });
+  }
+
+  frame.addEventListener('load', function () {
+
+    measureFrame();
+
+    setTimeout(measureFrame, 100);
+    setTimeout(measureFrame, 500);
+    setTimeout(measureFrame, 1000);
+
+  });
+
+  window.addEventListener(
+    'scroll',
+    requestSync,
+    { passive: true }
+  );
+
+  window.addEventListener(
+    'resize',
+    measureFrame
+  );
+
+})();
+</script>
+
+  
 </body>
 </html>
