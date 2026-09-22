@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ماژول سوابق و تجربه کاری | Work Experience 3D Timeline</title>
+  
+  <!-- Google Fonts: Vazirmatn -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-deep-velvet: #110106;
+      --ruby-dark: #8d2025;
+      --ruby-glow: #d94b50;
+      --gold-primary: #c8a85b;
+      --gold-light: #f3d98b;
+      --gold-glow: rgba(200, 168, 91, 0.45);
+      --font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --axis-left-pos: 30%;
+      --card-width: 440px;
+      --card-height: 220px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg-deep-velvet);
+      color: #f6e8cc;
+      font-family: var(--font-family);
+      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.6;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Ambient atmospheric background lighting */
+    .ambient-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(141, 32, 37, 0.22) 0%, transparent 60%),
+        radial-gradient(circle at 70% 80%, rgba(200, 168, 91, 0.12) 0%, transparent 55%),
+        radial-gradient(circle at 15% 85%, rgba(217, 75, 80, 0.15) 0%, transparent 50%),
+        var(--bg-deep-velvet);
+    }
+
+    /* Dust Bokeh Canvas */
+    #dustCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Master scroll container - dynamically sized by JS based on item count */
+    .timeline-scroll-container {
+      position: relative;
+      width: 100%;
+      min-height: 380vh;
+      z-index: 5;
+    }
+
+    /* Sticky 100vh viewport acting as the 3D Stage */
+    .sticky-viewport {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      perspective: 1600px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    /* Luminous vertical axis bar running the entire height */
+    .luminous-axis {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--axis-left-pos);
+      width: 3.5px;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        180deg,
+        rgba(200, 168, 91, 0) 0%,
+        rgba(243, 217, 139, 0.85) 12%,
+        #ffffff 50%,
+        rgba(243, 217, 139, 0.85) 88%,
+        rgba(141, 32, 37, 0) 100%
+      );
+      box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.9),
+        0 0 22px rgba(200, 168, 91, 0.75),
+        0 0 45px rgba(217, 75, 80, 0.6),
+        0 0 70px rgba(141, 32, 37, 0.4);
+      z-index: 10;
+      pointer-events: none;
+      transition: box-shadow 0.25s ease;
+    }
+
+    /* Axis Header: Pure opaque luxury badge situated directly over the axis */
+    .axis-header-container {
+      position: absolute;
+      top: 50px;
+      left: var(--axis-left-pos);
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 50; /* Sits strictly above the axis line */
+      pointer-events: none;
+      text-align: center;
+    }
+
+    /* Fully opaque luxury golden frame that completely occludes the vertical line */
+    .axis-gold-frame {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 28px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #2a070e 0%, #150208 55%, #22050b 100%);
+      border: 1.5px solid rgba(243, 217, 139, 0.9);
+      box-shadow: 
+        0 0 20px rgba(200, 168, 91, 0.55),
+        0 10px 30px rgba(0, 0, 0, 0.95),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5),
+        inset 0 0 16px rgba(141, 32, 37, 0.5);
+    }
+
+    /* Metallic inner bevel border */
+    .axis-gold-frame::before {
+      content: '';
+      position: absolute;
+      inset: 2.5px;
+      border-radius: 10px;
+      border: 1px solid rgba(200, 168, 91, 0.35);
+      pointer-events: none;
+    }
+
+    /* Title Typography with lustrous gold gradient */
+    .axis-badge-title {
+      position: relative;
+      z-index: 2;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7e4a8 45%, #c8a85b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(200, 168, 91, 0.4));
+      white-space: nowrap;
+      padding: 0 4px;
+    }
+
+    /* 3D Pivot Assembly anchored exactly onto the axis */
+    .carousel-pivot-assembly {
+      position: absolute;
+      left: var(--axis-left-pos);
+      top: 50%;
+      width: 0;
+      height: 0;
+      transform-style: preserve-3d;
+      will-change: transform;
+      z-index: 20;
+    }
+
+    /* Card hinge wrapper anchored at left: 0 (the axis is the pivot) */
+    .card-hinge-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: var(--card-width);
+      height: var(--card-height);
+      transform-origin: 0% 50% 0;
+      transform-style: preserve-3d;
+      margin-top: calc(-1 * var(--card-height) / 2);
+      will-change: transform, opacity, filter;
+      transition: opacity 0.15s ease-out;
+    }
+
+    /* Golden glowing node attached directly to the axis */
+    .exp-hinge-node {
+      position: absolute;
+      left: -9px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 15%, #f3d98b 55%, #c8a85b 95%);
+      box-shadow: 
+        0 0 10px #ffffff,
+        0 0 18px rgba(200, 168, 91, 0.9),
+        0 0 30px rgba(217, 75, 80, 0.8);
+      z-index: 25;
+      pointer-events: none;
+    }
+
+    .exp-hinge-node::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: #110106;
+    }
+
+    /* Connecting horizontal arm */
+    .hinge-connector-arm {
+      position: absolute;
+      left: 0;
+      top: calc(50% - 1.5px);
+      width: 24px;
+      height: 3px;
+      background: linear-gradient(90deg, #f3d98b, rgba(200, 168, 91, 0.4));
+      box-shadow: 0 0 8px rgba(243, 217, 139, 0.7);
+    }
+
+    /* Glassmorphic card surface with dark velvet + ruby tones */
+    .card-surface {
+      position: absolute;
+      left: 24px;
+      top: 0;
+      width: calc(var(--card-width) - 24px);
+      height: 100%;
+      background: linear-gradient(135deg, rgba(38, 7, 13, 0.94), rgba(17, 1, 6, 0.92));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--gold-glow);
+      border-radius: 20px;
+      padding: 20px 24px;
+      box-shadow: 
+        0 14px 40px rgba(0, 0, 0, 0.75),
+        inset 0 1px 2px rgba(243, 217, 139, 0.3),
+        inset 0 0 20px rgba(141, 32, 37, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      backface-visibility: hidden;
+      direction: rtl;
+    }
+
+    /* Ambient card corner glow */
+    .card-surface::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(217, 75, 80, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .card-role-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Golden Period Badge */
+    .card-period-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      background: rgba(200, 168, 91, 0.14);
+      border: 1px solid rgba(200, 168, 91, 0.4);
+      border-radius: 999px;
+      padding: 3px 12px;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .period-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ruby-glow);
+      box-shadow: 0 0 6px var(--ruby-glow);
+    }
+
+    /* Clean bullet list */
+    .card-bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .bullet-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: rgba(246, 232, 204, 0.92);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .bullet-marker {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background: linear-gradient(135deg, var(--gold-light), var(--ruby-dark));
+      box-shadow: 0 0 6px rgba(200, 168, 91, 0.6);
+      transform: rotate(45deg);
+    }
+
+    .card-footer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .card-tag-label {
+      font-size: 0.72rem;
+      color: rgba(200, 168, 91, 0.8);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* HUD scrubber controls */
+    .hud-controls {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(25, 4, 9, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(200, 168, 91, 0.35);
+      border-radius: 16px;
+      padding: 14px 20px;
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      direction: rtl;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 280px;
+    }
+
+    .hud-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .hud-slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hud-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 5px;
+      border-radius: 5px;
+      background: rgba(200, 168, 91, 0.25);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .hud-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 10px var(--gold-primary), 0 0 14px var(--ruby-glow);
+      cursor: pointer;
+      border: 2px solid #110106;
+      transition: transform 0.15s ease;
+    }
+
+    .hud-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .hud-hint {
+      font-size: 0.68rem;
+      color: rgba(246, 232, 204, 0.55);
+      text-align: left;
+      direction: ltr;
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --axis-left-pos: 20%;
+        --card-width: 380px;
+        --card-height: 220px;
+      }
+      .card-role-title {
+        font-size: 1.02rem;
+      }
+      .bullet-item {
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --axis-left-pos: 15%;
+        --card-width: 310px;
+        --card-height: 240px;
+      }
+      .card-surface {
+        padding: 16px;
+        border-radius: 16px;
+      }
+      .card-role-title {
+        font-size: 0.95rem;
+      }
+      .card-header-row {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .hud-controls {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient background glow layers -->
+  <div class="ambient-canvas"></div>
+
+  <!-- 3D Dust Bokeh Canvas with optical camera depth of field -->
+  <canvas id="dustCanvas"></canvas>
+
+  <main class="timeline-scroll-container" id="timelineScrollContainer">
+    <div class="sticky-viewport" id="stickyViewport">
+
+      <!-- Axis Header: Luxury Opaque Golden Frame situated on the axis line -->
+      <header class="axis-header-container" aria-label="عنوان سوابق کاری">
+        <div class="axis-gold-frame">
+          <h2 class="axis-badge-title">تجربه کاری</h2>
+        </div>
+      </header>
+
+      <!-- Vertical Luminous Neon Axis (Left: 30%) -->
+      <div class="luminous-axis" id="luminousAxis" aria-hidden="true"></div>
+
+      <!-- 3D Carousel Stage anchored directly to the axis -->
+      <div class="carousel-pivot-assembly" id="carouselPivotAssembly"></div>
+
+    </div>
+  </main>
+
+  <aside class="hud-controls" aria-label="تنظیمات اسکرول پیش‌نمایش">
+    <div class="hud-header">
+      <span>اسکرابر سه‌بعدی زمان‌بندی</span>
+      <span id="hudProgressText">۰٪</span>
+    </div>
+    <div class="hud-slider-wrap">
+      <input type="range" id="hudSlider" class="hud-slider" min="0" max="100" value="0" step="0.1" aria-label="پیشرفت زمانی">
+    </div>
+    <div class="hud-hint">Interactive 3D Timeline Scrubber &bull; Scroll or Drag</div>
+  </aside>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ========================================================
+         بخش افزودن کارت جدید (برای افزودن کارت به بالای لیست):
+         کافی است آبجکت جدید را به ابتدای آرایه زیر اضافه کنید.
+         کارت اول همواره جدیدترین سابقه زمانی است و در ابتدای اسکرول،
+         رو به بیننده در جلوترین موقعیت قرار می‌گیرد.
+         
+         نمونه ساختار جهت کپی و افزودن:
+         {
+           title: 'عنوان شغل یا شرکت جدید',
+           period: '۱۴۰۵ تا اکنون',
+           bullets: [
+             'مورد اول توضیحات و دستاوردها',
+             'مورد دوم توضیحات و دستاوردها',
+             'مورد سوم توضیحات و دستاوردها'
+           ],
+           tag: 'حوزه فعالیت جدید'
+         },
+         ======================================================== */
+      const EXPERIENCE_DATA = [
+        // ----------------------------------------------------
+        // کارت ۱: جدیدترین تجربه کاری (بالاترین سطح عمودی و جلوترین دید)
+        // ----------------------------------------------------
+        {
+          title: 'همکاری با مجموعه رسانه‌ای لاهوت',
+          period: '۱۴۰۳ تا ۱۴۰۵',
+          bullets: [
+            'تولید محتوا برای بنیاد برکت',
+            'تولید محتوای رسانه‌ای برای شهرداری تهران',
+            'همکاری رسانه‌ای با معاونت توسعه نهاد ریاست جمهوری'
+          ],
+          tag: 'مدیریت و تولید رسانه'
+        },
+        // ----------------------------------------------------
+        // کارت ۲: تجربه میانی
+        // ----------------------------------------------------
+        {
+          title: 'همکاری با سازمان بسیج دانشجویی',
+          period: '۱۴۰۲ (سربازی در روابط عمومی)',
+          bullets: [
+            'تولید محتوا و فعالیت‌های رسانه‌ای',
+            'آموزش تدوین و تولید محتوای ویدیویی',
+            'مستندسازی فعالیت‌ها و برنامه‌ها'
+          ],
+          tag: 'روابط عمومی و آموزش'
+        },
+        // ----------------------------------------------------
+        // کارت ۳: تجربه پیشین
+        // ----------------------------------------------------
+        {
+          title: 'مسئول رسانه مرکز اسلام ناب',
+          period: '۱۴۰۱ تا ۱۴۰۲',
+          bullets: [
+            'راه‌اندازی مجدد رسانه مرکز اسلام ناب',
+            'مدیریت رسانه دوره اسلام ناب ۱۴۰۱',
+            'طراحی هویت بصری و تولید محتوای رسانه‌ای'
+          ],
+          tag: 'برندینگ و راه‌اندازی'
+        }
+      ];
+
+      // DOM Elements
+      const container = document.getElementById('timelineScrollContainer');
+      const pivotAssembly = document.getElementById('carouselPivotAssembly');
+      const luminousAxis = document.getElementById('luminousAxis');
+      const hudSlider = document.getElementById('hudSlider');
+      const hudProgressText = document.getElementById('hudProgressText');
+      const dustCanvas = document.getElementById('dustCanvas');
+      const ctx = dustCanvas.getContext('2d');
+
+      // Calculate dynamic scroll height so adding more cards automatically expands scroll travel
+      const CARD_VERTICAL_GAP = 160; // Clean vertical offset preventing overlap
+      const TOTAL_CARDS = EXPERIENCE_DATA.length;
+      const calculatedScrollVh = Math.max(380, 200 + (TOTAL_CARDS * 70));
+      container.style.height = `${calculatedScrollVh}vh`;
+
+      // Dynamically create and append cards from EXPERIENCE_DATA
+      EXPERIENCE_DATA.forEach((exp, index) => {
+        const cardWrapper = document.createElement('article');
+        cardWrapper.className = 'card-hinge-wrapper';
+        cardWrapper.id = `card-hinge-${index}`;
+        cardWrapper.setAttribute('aria-label', exp.title);
+
+        const bulletsHtml = exp.bullets
+          .map(b => `<li class="bullet-item"><span class="bullet-marker"></span><span>${b}</span></li>`)
+          .join('');
+
+        cardWrapper.innerHTML = `
+          <div class="exp-hinge-node" aria-hidden="true"></div>
+          <div class="hinge-connector-arm" aria-hidden="true"></div>
+          
+          <div class="card-surface">
+            <div class="card-header-row">
+              <h3 class="card-role-title">${exp.title}</h3>
+              <span class="card-period-tag">
+                <span class="period-dot"></span>
+                ${exp.period}
+              </span>
+            </div>
+            
+            <ul class="card-bullet-list">
+              ${bulletsHtml}
+            </ul>
+
+            <div class="card-footer-meta">
+              <span class="card-tag-label">${exp.tag}</span>
+            </div>
+          </div>
+        `;
+
+        pivotAssembly.appendChild(cardWrapper);
+      });
+
+      const cardNodes = Array.from(document.querySelectorAll('.card-hinge-wrapper'));
+
+      let canvasW = (dustCanvas.width = window.innerWidth);
+      let canvasH = (dustCanvas.height = window.innerHeight);
+      const DUST_COUNT = 65;
+      const particles = [];
+
+      class DustParticle {
+        constructor() {
+          this.reset(true);
+        }
+
+        reset(initial = false) {
+          this.x = Math.random() * canvasW;
+          this.y = initial ? Math.random() * canvasH : canvasH + 20;
+          // Z depth from -1 (extreme rear) to +1 (extreme near foreground); 0 is crisp focal plane
+          this.z = (Math.random() * 2) - 1;
+          this.baseRadius = 1.2 + Math.random() * 2.2;
+          this.speedY = 0.25 + Math.random() * 0.45;
+          this.speedX = (Math.random() - 0.5) * 0.3;
+          this.pulse = Math.random() * Math.PI * 2;
+          this.pulseSpeed = 0.015 + Math.random() * 0.025;
+        }
+
+        update() {
+          this.y -= this.speedY;
+          this.x += this.speedX + Math.sin(this.pulse) * 0.2;
+          this.pulse += this.pulseSpeed;
+
+          if (this.y < -30 || this.x < -40 || this.x > canvasW + 40) {
+            this.reset(false);
+          }
+        }
+
+        draw() {
+          const focalDistance = Math.abs(this.z); // 0 (crisp) to 1 (blurred bokeh)
+          const radius = this.baseRadius * (1 + focalDistance * 1.8);
+          const baseAlpha = 0.25 + (1 - focalDistance) * 0.65;
+          const alpha = Math.max(0.1, baseAlpha * (0.7 + Math.sin(this.pulse) * 0.3));
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
+
+          if (focalDistance > 0.4) {
+            // Out of focus: soft cinematic bokeh disc
+            const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, radius);
+            grad.addColorStop(0, `rgba(243, 217, 139, ${alpha * 0.7})`);
+            grad.addColorStop(0.5, `rgba(200, 168, 91, ${alpha * 0.35})`);
+            grad.addColorStop(1, 'rgba(141, 32, 37, 0)');
+            ctx.fillStyle = grad;
+          } else {
+            // In focus: crisp golden glow point
+            ctx.fillStyle = `rgba(247, 228, 168, ${alpha})`;
+            ctx.shadowColor = 'rgba(243, 217, 139, 0.9)';
+            ctx.shadowBlur = 4;
+          }
+
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < DUST_COUNT; i++) {
+        particles.push(new DustParticle());
+      }
+
+      function handleResize() {
+        canvasW = dustCanvas.width = window.innerWidth;
+        canvasH = dustCanvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', handleResize);
+
+      // Persian digit converter
+      function toPersianDigits(num) {
+        const id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        return num.toString().replace(/[0-9]/g, w => id[+w]);
+      }
+
+      // Angular spacing distributed dynamically across cards
+      const BASE_ANGLE_OFFSET = 360 / TOTAL_CARDS;
+
+      // Park and stop exactly on the last card at progress = 1:
+      // Last card index = TOTAL_CARDS - 1
+      // For the last card to face the camera directly (angle = 0°) at progress = 1:
+      // cardAngle = globalOrbitAngle + ((TOTAL_CARDS - 1) * BASE_ANGLE_OFFSET) = 0
+      // Therefore, the total rotation travel must be exactly (TOTAL_CARDS - 1) * BASE_ANGLE_OFFSET
+      const LAST_CARD_INDEX = TOTAL_CARDS - 1;
+      const TOTAL_ROTATION_TO_LAST_CARD = LAST_CARD_INDEX * BASE_ANGLE_OFFSET;
+
+      // Exact vertical distance needed so that the last card rises perfectly to eye-level (Y = 0) at progress = 1
+      // Since last card's base position is (LAST_CARD_INDEX * CARD_VERTICAL_GAP) - 20,
+      // setting TOTAL_GLOBAL_RISE to that exact offset parks the last card right in the sweet spot!
+      const TOTAL_GLOBAL_RISE = (LAST_CARD_INDEX * CARD_VERTICAL_GAP);
+
+      function update3DScene(progress) {
+        // Reversed rotation around the vertical axis, reaching exactly the last card at progress = 1
+        const globalOrbitAngle = -progress * TOTAL_ROTATION_TO_LAST_CARD;
+
+        // Global upward rise: smoothly lifts the cards so the last card parks directly at optimal eye-level
+        const globalRise = -progress * TOTAL_GLOBAL_RISE;
+
+        // Pulsing luminous axis line
+        const glowPulse = 0.85 + Math.sin(progress * Math.PI * 4) * 0.25;
+        luminousAxis.style.boxShadow = `
+          0 0 ${10 * glowPulse}px rgba(255, 255, 255, 0.95),
+          0 0 ${24 * glowPulse}px rgba(200, 168, 91, 0.8),
+          0 0 ${48 * glowPulse}px rgba(217, 75, 80, 0.65),
+          0 0 ${75 * glowPulse}px rgba(141, 32, 37, 0.45)
+        `;
+
+        // Dynamic fade boundary: completely disappear below and near the "تجربه کاری" header badge
+        const viewportHalfH = window.innerHeight / 2;
+        const TOP_FADE_START_Y = -viewportHalfH + 180; // Begins fading out
+        const TOP_FADE_END_Y = -viewportHalfH + 80;    // Opacity 0 (completely gone)
+
+        cardNodes.forEach((cardEl, idx) => {
+          // At progress = 0: Card 0 (لاهوت) is at angle 0° (facing camera front and center).
+          // At progress = 1: Card [LAST_CARD_INDEX] (اسلام ناب یا آخرین کارت) is at angle 0° (perfectly parked and facing camera).
+          const cardAngle = globalOrbitAngle + (idx * BASE_ANGLE_OFFSET);
+          const rad = (cardAngle * Math.PI) / 180;
+          const cosAngle = Math.cos(rad); // 1 = facing front, -1 = facing back
+
+          // Vertical positioning (Top to Bottom):
+          // Card 0 starts highest; each card sits CARD_VERTICAL_GAP lower.
+          const verticalBaseOffset = (idx * CARD_VERTICAL_GAP) - 20;
+          const currentY = verticalBaseOffset + globalRise;
+
+          // Upper fade factor: completely disappears before reaching header badge
+          let topFadeMultiplier = 1;
+          if (currentY <= TOP_FADE_END_Y) {
+            topFadeMultiplier = 0;
+          } else if (currentY < TOP_FADE_START_Y) {
+            topFadeMultiplier = (currentY - TOP_FADE_END_Y) / (TOP_FADE_START_Y - TOP_FADE_END_Y);
+            topFadeMultiplier = Math.max(0, Math.min(1, topFadeMultiplier));
+          }
+
+          // Realistic Depth of Field (DoF): Front is sharp & bright; back is blurred & scaled down
+          const normalizedDepth = (cosAngle + 1) / 2; // [0 at rear, 1 at front]
+          const blurAmount = (1 - normalizedDepth) * 6.5; // 0px (front) to 6.5px (rear)
+          const baseOpacity = 0.35 + (normalizedDepth * 0.65); // 0.35 to 1.0
+          const finalOpacity = baseOpacity * topFadeMultiplier;
+          const cardScale = 0.84 + (normalizedDepth * 0.16); // 0.84 to 1.0
+          const brightnessVal = 50 + (normalizedDepth * 50); // 50% to 100%
+
+          // Dynamic Z-index so forward-facing cards always layer above rear cards
+          const calculatedZIndex = Math.round((cosAngle + 1) * 20) + 10;
+
+          // Apply 3D matrix transform
+          cardEl.style.transform = `translateY(${currentY}px) rotateY(${cardAngle}deg) scale(${cardScale})`;
+          cardEl.style.opacity = finalOpacity.toFixed(3);
+          cardEl.style.filter = `blur(${blurAmount.toFixed(1)}px) brightness(${brightnessVal.toFixed(0)}%)`;
+          cardEl.style.zIndex = calculatedZIndex;
+          cardEl.style.pointerEvents = (normalizedDepth > 0.45 && topFadeMultiplier > 0.2) ? 'auto' : 'none';
+        });
+      }
+
+      let targetProgress = 0;
+      let currentProgress = 0;
+      let isScrubbing = false;
+
+      function render() {
+        if (!isScrubbing) {
+          const rect = container.getBoundingClientRect();
+          const totalDistance = container.offsetHeight - window.innerHeight;
+          const scrolled = -rect.top;
+          let p = scrolled / totalDistance;
+          p = Math.max(0, Math.min(1, p));
+          targetProgress = p;
+        }
+
+        // Smooth Lerp for high-performance 60fps interpolation
+        const lerpFactor = 0.1;
+        currentProgress += (targetProgress - currentProgress) * lerpFactor;
+
+        if (Math.abs(targetProgress - currentProgress) < 0.0001) {
+          currentProgress = targetProgress;
+        }
+
+        // Update 3D cards
+        update3DScene(currentProgress);
+
+        // Update Dust Particles
+        ctx.clearRect(0, 0, canvasW, canvasH);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+
+        // Update HUD sync
+        if (!isScrubbing) {
+          hudSlider.value = (currentProgress * 100).toFixed(1);
+        }
+        hudProgressText.textContent = `${toPersianDigits(Math.round(currentProgress * 100))}٪`;
+
+        requestAnimationFrame(render);
+      }
+
+      hudSlider.addEventListener('input', (e) => {
+        isScrubbing = true;
+        targetProgress = parseFloat(e.target.value) / 100;
+        currentProgress = targetProgress;
+      });
+
+      hudSlider.addEventListener('change', () => {
+        const totalDistance = container.offsetHeight - window.innerHeight;
+        const targetScrollY = container.offsetTop + (targetProgress * totalDistance);
+        window.scrollTo({
+          top: targetScrollY,
+          behavior: 'smooth'
+        });
+        setTimeout(() => {
+          isScrubbing = false;
+        }, 300);
+      });
+
+      window.addEventListener('resize', () => {
+        update3DScene(currentProgress);
+      });
+
+      // Start animation loop on window load
+      window.onload = function () {
+        update3DScene(0);
+        requestAnimationFrame(render);
+      };
+    })();
+  </script>
+</body>
+</html>
