@@ -710,27 +710,49 @@
           .join('');
 
         cardWrapper.innerHTML = `
-          <div class="exp-hinge-node" aria-hidden="true"></div>
-          <div class="hinge-connector-arm" aria-hidden="true"></div>
-          
-          <div class="card-surface">
-            <div class="card-header-row">
-              <h3 class="card-role-title">${exp.title}</h3>
-              <span class="card-period-tag">
-                <span class="period-dot"></span>
-                ${exp.period}
-              </span>
-            </div>
-            
-            <ul class="card-bullet-list">
-              ${bulletsHtml}
-            </ul>
+  <div class="exp-hinge-node" aria-hidden="true"></div>
 
-            <div class="card-footer-meta">
-              <span class="card-tag-label">${exp.tag}</span>
-            </div>
-          </div>
-        `;
+  <div class="hinge-connector-arm" aria-hidden="true"></div>
+
+  <div class="card-surface">
+
+    <div class="card-top-row">
+
+      <div class="card-title-area">
+
+        <h3 class="card-role-title">
+          ${exp.title}
+        </h3>
+
+        <span class="card-period-tag">
+          <span class="period-dot"></span>
+          ${exp.period}
+        </span>
+
+      </div>
+
+      <div class="card-logo-box">
+        <img
+          src="${exp.logo}"
+          alt="لوگوی ${exp.title}"
+          class="card-logo"
+        />
+      </div>
+
+    </div>
+
+    <div class="card-header-divider" aria-hidden="true"></div>
+
+    <ul class="card-bullet-list">
+      ${bulletsHtml}
+    </ul>
+
+    <div class="card-footer-meta">
+      <span class="card-tag-label">${exp.tag}</span>
+    </div>
+
+  </div>
+`;
 
         pivotAssembly.appendChild(cardWrapper);
       });
