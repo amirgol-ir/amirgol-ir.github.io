@@ -1719,6 +1719,234 @@
 })();
 </script>
 
+
+  <!-- ================= START: LUXURY CRIMSON FOOTER ================= -->
+<footer id="main-footer" class="luxury-crimson-footer" dir="rtl">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Vazirmatn:wght@300;400;600;700;900&display=swap');
+
+    #main-footer.luxury-crimson-footer {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(180deg, #3d0511 0%, #1f0208 55%, #0d0104 100%);
+      color: #ffffff;
+      font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+      box-sizing: border-box;
+      overflow: hidden;
+      clear: both;
+      text-align: center;
+    }
+
+    /* امواج متحرک ادغام‌کننده طلایی ماژول ۵ به زرشکی فوتر */
+    #main-footer .wave-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100px;
+      background: #8f6a15; /* هماهنگ با انتهای گرادیان طلایی ماژول ۵ */
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    #main-footer .waves {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 70px;
+      max-height: 120px;
+    }
+
+    #main-footer .parallax > use {
+      animation: wave-motion 24s cubic-bezier(.55, .5, .45, .5) infinite;
+    }
+    #main-footer .parallax > use:nth-child(1) {
+      animation-delay: -2s;
+      animation-duration: 7s;
+      fill: rgba(143, 17, 39, 0.45);
+    }
+    #main-footer .parallax > use:nth-child(2) {
+      animation-delay: -3s;
+      animation-duration: 10s;
+      fill: rgba(223, 183, 82, 0.28); /* رگه نور طلایی روی موج */
+    }
+    #main-footer .parallax > use:nth-child(3) {
+      animation-delay: -4s;
+      animation-duration: 13s;
+      fill: rgba(92, 8, 25, 0.75);
+    }
+    #main-footer .parallax > use:nth-child(4) {
+      animation-delay: -5s;
+      animation-duration: 18s;
+      fill: #3d0511; /* اتصال بدون درز به بدنه فوتر */
+    }
+
+    @keyframes wave-motion {
+      0% { transform: translate3d(-90px, 0, 0); }
+      100% { transform: translate3d(85px, 0, 0); }
+    }
+
+    /* محتوای داخلی فوتر */
+    #main-footer .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 45px 24px 35px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* دکمه اختصاصی بازگشت به بالا */
+    #main-footer .back-to-top-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(223, 183, 82, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+      color: #f5e197;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.35s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #main-footer .back-to-top-btn svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    #main-footer .back-to-top-btn:hover {
+      background: #dfb752;
+      color: #1a0207;
+      border-color: #dfb752;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(223, 183, 82, 0.4);
+    }
+
+    #main-footer .back-to-top-btn:hover svg {
+      transform: translateY(-3px);
+    }
+
+    /* کادر تیتر و امضای هنری */
+    #main-footer .signature-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #main-footer .signature-title {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 900;
+      margin: 0;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 15px rgba(223, 183, 82, 0.3);
+    }
+
+    #main-footer .author-credit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #dfb752;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 8px 22px;
+      border-radius: 30px;
+      border: 1px solid rgba(223, 183, 82, 0.25);
+    }
+
+    #main-footer .author-name {
+      color: #ffffff;
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: #dfb752;
+      text-underline-offset: 6px;
+    }
+
+    /* خط جداکننده باریک طلایی */
+    #main-footer .footer-divider {
+      width: 100%;
+      max-width: 500px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(223, 183, 82, 0.35), transparent);
+    }
+
+    /* کپی‌رایت */
+    #main-footer .copyright-text {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      #main-footer .wave-wrapper {
+        height: 65px;
+      }
+      #main-footer .footer-container {
+        padding: 35px 16px 25px 16px;
+        gap: 24px;
+      }
+      #main-footer .author-credit {
+        font-size: 0.95rem;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+
+  <!-- امواج متحرک متالیک و زرشکی -->
+  <div class="wave-wrapper">
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" />
+        <use xlink:href="#gentle-wave" x="48" y="3" />
+        <use xlink:href="#gentle-wave" x="48" y="5" />
+        <use xlink:href="#gentle-wave" x="48" y="7" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- بدنه متمرکز فوتر -->
+  <div class="footer-container">
+    
+    <!-- تنها گزینه: دکمه نرم بازگشت به بالا -->
+    <a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top-btn">
+      <span>بازگشت به ابتدای صفحه</span>
+      <svg fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+      </svg>
+    </a>
+
+    <!-- تیتر جلب‌توجه‌کننده و امضای طراحی -->
+    <div class="signature-block">
+      
+      <div class="author-credit">
+        <span>ایده‌پردازی، طراحی و توسعه توسط</span>
+        <!-- نام خود را به جای [نام و نام خانوادگی شما] بنویسید -->
+        <span class="author-name">  امیرعلی گل چینی   </span>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <!-- کپی‌رایت قانونی -->
+    <p class="copyright-text">
+      تمامی حقوق مادی و معنوی این وب‌سایت محفوظ است ©
+    </p>
+
+  </div>
+</footer>
+<!-- ================= END: LUXURY CRIMSON FOOTER ================= -->
   
 </body>
 </html>
