@@ -1457,6 +1457,254 @@
 </section>
 <!-- ================= END: MODULE 5 ================= -->
 
+
+  <!-- ======================================================== -->
+<!-- ماژول ۶: مستند «عروس یافا» (بکگراند تار + کارت پوستر)     -->
+<!-- ======================================================== -->
+<section id="documentary-section" class="doc-yafa" dir="rtl">
+  <style>
+    #documentary-section.doc-yafa {
+      position: relative;
+      width: 100%;
+      padding: 90px 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+      font-family: 'Vazirmatn', system-ui, sans-serif;
+      color: #ffffff;
+    }
+
+    /* ---------- بکگراند تار (دسکتاپ: galal-of / موبایل: galal-am) ---------- */
+    #documentary-section .doc-bg {
+      position: absolute;
+      inset: -40px;
+      background-size: cover;
+      background-position: center 20%;
+      filter: blur(18px) brightness(0.45) saturate(1.1);
+      transform: scale(1.12);
+      z-index: 0;
+    }
+
+    #documentary-section .doc-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(22, 2, 7, 0.75) 0%, rgba(56, 4, 15, 0.55) 50%, rgba(10, 1, 4, 0.85) 100%);
+    }
+
+    #documentary-section .doc-bg-mobile { display: none; }
+    #documentary-section .doc-bg-desktop {
+      background-image: url('pic/galal-of.webp');
+    }
+
+    @media (max-width: 768px) {
+      #documentary-section .doc-bg-desktop { display: none; }
+      #documentary-section .doc-bg-mobile {
+        display: block;
+        background-image: url('pic/galal-am.webp');
+      }
+    }
+
+    /* ---------- محتوای روی بکگراند ---------- */
+    #documentary-section .doc-content {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+    }
+
+    /* ---------- کارت پوستر با استروک طلایی ---------- */
+    #documentary-section .doc-poster-card {
+      flex-shrink: 0;
+      position: relative;
+      border-radius: 22px;
+      padding: 5px;
+      background: linear-gradient(145deg, #d4af37 0%, #f6d884 30%, #8f6a1a 60%, #d4af37 100%);
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.75), 0 0 40px rgba(212, 175, 55, 0.3);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    /* استروک کرمی (Curve) گوشه‌های کارت */
+    #documentary-section .doc-poster-card::before {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border-radius: 27px;
+      border: 1.5px solid rgba(246, 216, 132, 0.45);
+      pointer-events: none;
+    }
+
+    #documentary-section .doc-poster-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 32px 65px rgba(0, 0, 0, 0.85), 0 0 55px rgba(225, 29, 72, 0.45);
+    }
+
+    #documentary-section .doc-poster {
+      display: block;
+      width: 310px;
+      height: auto;
+      border-radius: 18px;
+    }
+
+    /* ---------- متن معرفی ---------- */
+    #documentary-section .doc-info {
+      flex: 1;
+      max-width: 480px;
+    }
+
+    #documentary-section .doc-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #f6d884;
+      background: rgba(197, 29, 52, 0.35);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      padding: 4px 16px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+    }
+
+    #documentary-section .doc-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #d4af37;
+      margin: 0 0 6px;
+      letter-spacing: -0.5px;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    #documentary-section .doc-tagline {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fda4af;
+      margin: 0 0 18px;
+    }
+
+    #documentary-section .doc-desc {
+      font-size: 0.98rem;
+      line-height: 2.1;
+      color: rgba(255, 255, 255, 0.92);
+      text-align: justify;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+      margin: 0 0 10px;
+    }
+
+    #documentary-section .doc-credits {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.65);
+      margin: 0 0 28px;
+    }
+
+    /* ---------- دکمه مشاهده ---------- */
+    #documentary-section .doc-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 40px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #c51d34, #8f1127);
+      border: 1.5px solid rgba(223, 183, 82, 0.65);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(143, 17, 39, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    #documentary-section .doc-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    #documentary-section .doc-btn:hover {
+      background: linear-gradient(135deg, #e11d48, #b91c47);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(225, 29, 72, 0.65), 0 0 25px rgba(223, 183, 82, 0.4);
+    }
+
+    #documentary-section .doc-btn:hover svg {
+      transform: scale(1.2);
+    }
+
+    /* ---------- موبایل: کارت وسط، متن زیر ---------- */
+    @media (max-width: 768px) {
+      #documentary-section.doc-yafa {
+        padding: 65px 16px 70px;
+      }
+
+      #documentary-section .doc-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+
+      #documentary-section .doc-poster {
+        width: min(300px, 80vw);
+      }
+
+      #documentary-section .doc-title {
+        font-size: 1.75rem;
+      }
+
+      #documentary-section .doc-info {
+        max-width: 100%;
+      }
+
+      #documentary-section .doc-desc {
+        font-size: 0.93rem;
+        padding: 0 4px;
+      }
+
+      #documentary-section .doc-btn {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+      }
+    }
+  </style>
+
+  <!-- بکگراند تار -->
+  <div class="doc-bg doc-bg-desktop"></div>
+  <div class="doc-bg doc-bg-mobile"></div>
+
+  <div class="doc-content">
+
+    <!-- کارت پوستر اصلی مستند -->
+    <div class="doc-poster-card">
+      <img src="pic/galal-of.webp" alt="پوستر مستند عروس یافا - امیرعلی گل‌چینی" class="doc-poster" loading="lazy" />
+    </div>
+
+    <!-- معرفی و دکمه ورود -->
+    <div class="doc-info">
+      <span class="doc-label">مستند منتخب</span>
+      <h2 class="doc-title">عروس یافا</h2>
+      <p class="doc-tagline">یک زن، یک عملیات، یک ملت</p>
+      <p class="doc-desc">
+        این مستند پرتره‌ای از «دلال مغربی» و عملیات ساحل در سال ۱۹۷۸ است؛
+        عملیاتی مهم که به یکی از مشهورترین رویدادهای تاریخ مبارزات فلسطینی
+        تبدیل شد.
+      </p>
+      <p class="doc-credits">کارگردانان: امیرعلی گل‌چینی، مهدی چراغ</p>
+
+      <a href="https://www.aparat.com/v/zaa9x89?playlist=26165270&refererRef=channel_page" target="_blank" rel="noopener" class="doc-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        مشاهده مستند
+      </a>
+    </div>
+
+  </div>
+</section>
+<!-- ================== پایان ماژول ۶ ================== -->
+
   
 
 
