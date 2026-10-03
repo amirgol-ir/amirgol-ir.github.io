@@ -1473,7 +1473,7 @@
       color: var(--text-light);
     }
 
-    /* ---------- بکگراند تار (دسکتاپ: galal-of / موبایل: galal-am) ---------- */
+    /* ---------- بکگراند تار ---------- */
     #documentary-section .doc-bg {
       position: absolute;
       inset: -30px;
@@ -1488,19 +1488,47 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(22, 2, 7, 0.7) 0%, rgba(56, 4, 15, 0.45) 50%, rgba(10, 1, 4, 0.8) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(22, 2, 7, 0.7) 0%,
+        rgba(56, 4, 15, 0.45) 50%,
+        rgba(10, 1, 4, 0.8) 100%
+      );
     }
 
-    #documentary-section .doc-bg-mobile { display: none; }
+    /* دسکتاپ: بکگراند افقی */
     #documentary-section .doc-bg-desktop {
+      display: block;
       background-image: url('pic/galal-of.webp');
     }
 
+    /* موبایل: بکگراند عمودی */
+    #documentary-section .doc-bg-mobile {
+      display: none;
+    }
+
     @media (max-width: 768px) {
-      #documentary-section .doc-bg-desktop { display: none; }
+      #documentary-section .doc-bg-desktop {
+        display: none;
+      }
+
       #documentary-section .doc-bg-mobile {
         display: block;
         background-image: url('pic/galal-am.webp');
+
+        /* تاری کمتر برای موبایل */
+        filter: blur(6px) brightness(0.58) saturate(1.1);
+        transform: scale(1.06);
+        background-position: center center;
+      }
+
+      #documentary-section .doc-bg-mobile::after {
+        background: linear-gradient(
+          180deg,
+          rgba(22, 2, 7, 0.66) 0%,
+          rgba(56, 4, 15, 0.38) 50%,
+          rgba(10, 1, 4, 0.82) 100%
+        );
       }
     }
 
@@ -1522,12 +1550,19 @@
       position: relative;
       border-radius: 22px;
       padding: 5px;
-      background: linear-gradient(145deg, var(--gold-primary) 0%, var(--gold-light) 30%, #8f6a1a 60%, var(--gold-primary) 100%);
-      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.75), 0 0 40px rgba(212, 175, 55, 0.3);
+      background: linear-gradient(
+        145deg,
+        var(--gold-primary) 0%,
+        var(--gold-light) 30%,
+        #8f6a1a 60%,
+        var(--gold-primary) 100%
+      );
+      box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.75),
+        0 0 40px rgba(212, 175, 55, 0.3);
       transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    /* استروک بیرونی کرمی گوشه‌ها */
     #documentary-section .doc-poster-card::before {
       content: "";
       position: absolute;
@@ -1539,23 +1574,23 @@
 
     #documentary-section .doc-poster-card:hover {
       transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 32px 65px rgba(0, 0, 0, 0.85), 0 0 55px rgba(225, 29, 72, 0.45);
+      box-shadow:
+        0 32px 65px rgba(0, 0, 0, 0.85),
+        0 0 55px rgba(225, 29, 72, 0.45);
     }
 
-    /* پوسترها: دسکتاپ عمودی / موبایل افقی */
-    #documentary-section .doc-poster-of { display: block; }
-    #documentary-section .doc-poster-am { display: none; }
-
-    #documentary-section .doc-poster-of,
+    /* ---------- پوسترها ---------- */
+    /* دسکتاپ: پوستر عمودی */
     #documentary-section .doc-poster-am {
+      display: block;
       width: 310px;
       height: auto;
       border-radius: 18px;
     }
 
-    @media (max-width: 768px) {
-      #documentary-section .doc-poster-of { display: none; }
-      #documentary-section .doc-poster-am { display: block; width: min(340px, 88vw); }
+    /* دسکتاپ: پوستر افقی مخفی */
+    #documentary-section .doc-poster-of {
+      display: none;
     }
 
     /* ---------- متن معرفی ---------- */
@@ -1566,7 +1601,6 @@
       padding-right: 26px;
     }
 
-    /* خط عمودی طلایی کنار متن (اکسنت تم سایت) */
     #documentary-section .doc-info::before {
       content: "";
       position: absolute;
@@ -1575,7 +1609,12 @@
       bottom: 6px;
       width: 3.5px;
       border-radius: 4px;
-      background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-primary) 45%, transparent 100%);
+      background: linear-gradient(
+        180deg,
+        var(--gold-light) 0%,
+        var(--gold-primary) 45%,
+        transparent 100%
+      );
     }
 
     #documentary-section .doc-title {
@@ -1587,7 +1626,6 @@
       text-shadow: 0 3px 14px rgba(0, 0, 0, 0.65);
     }
 
-    /* تگ‌لاین با جداکننده طلایی */
     #documentary-section .doc-tagline {
       display: flex;
       align-items: center;
@@ -1602,7 +1640,11 @@
       content: "";
       flex: 1;
       height: 1px;
-      background: linear-gradient(to left, rgba(212, 175, 55, 0.55), transparent);
+      background: linear-gradient(
+        to left,
+        rgba(212, 175, 55, 0.55),
+        transparent
+      );
     }
 
     #documentary-section .doc-desc {
@@ -1614,7 +1656,6 @@
       margin: 0 0 14px;
     }
 
-    /* عوامل به‌صورت چیپ شیشه‌ای ظریف */
     #documentary-section .doc-credits {
       display: inline-flex;
       align-items: center;
@@ -1637,75 +1678,132 @@
       flex-shrink: 0;
     }
 
-    /* ---------- دکمه مشاهده (رنگ‌های تم) ---------- */
+    /* ---------- دکمه مشاهده مستند ---------- */
     #documentary-section .doc-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       padding: 14px 42px;
       border-radius: 50px;
-      background: linear-gradient(135deg, var(--crimson-red), var(--ruby-red));
-      border: 1.5px solid rgba(223, 183, 82, 0.65);
+
+      /* زرشکی تیره + طلایی */
+      background: linear-gradient(
+        135deg,
+        #560816 0%,
+        var(--crimson-red) 52%,
+        #7d1025 100%
+      );
+
+      border: 1.5px solid rgba(223, 183, 82, 0.8);
       color: #ffffff;
       font-size: 1rem;
       font-weight: 800;
       text-decoration: none;
-      box-shadow: 0 8px 22px rgba(143, 17, 39, 0.6);
-      transition: all 0.3s ease;
+
+      box-shadow:
+        0 8px 22px rgba(79, 5, 20, 0.65),
+        0 0 0 1px rgba(212, 175, 55, 0.08);
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
     }
 
     #documentary-section .doc-btn svg {
       width: 20px;
       height: 20px;
-      fill: currentColor;
+      fill: #ffffff;
       transition: transform 0.3s ease;
     }
 
     #documentary-section .doc-btn:hover {
-      background: linear-gradient(135deg, var(--ruby-red), var(--crimson-red));
+      background: linear-gradient(
+        135deg,
+        #771126 0%,
+        #941631 50%,
+        #6b0b1e 100%
+      );
       transform: translateY(-4px);
-      box-shadow: 0 14px 32px rgba(225, 29, 72, 0.65), 0 0 25px rgba(223, 183, 82, 0.4);
+
+      box-shadow:
+        0 14px 32px rgba(99, 7, 29, 0.7),
+        0 0 25px rgba(223, 183, 82, 0.4);
     }
 
     #documentary-section .doc-btn:hover svg {
       transform: scale(1.2);
     }
 
-    /* ---------- موبایل: کارت وسط، متن زیر ---------- */
+    /* ---------- موبایل ---------- */
     @media (max-width: 768px) {
       #documentary-section.doc-yafa {
-        padding: 65px 16px 70px;
+        padding: 58px 14px 65px;
       }
 
       #documentary-section .doc-content {
         flex-direction: column;
-        gap: 30px;
+        gap: 28px;
         text-align: center;
+        max-width: 430px;
+      }
+
+      /* موبایل: پوستر افقی */
+      #documentary-section .doc-poster-card {
+        width: min(340px, 92vw);
+        padding: 4px;
+        border-radius: 20px;
+        box-shadow:
+          0 18px 42px rgba(0, 0, 0, 0.72),
+          0 0 30px rgba(212, 175, 55, 0.24);
+      }
+
+      #documentary-section .doc-poster-am {
+        display: none;
+      }
+
+      #documentary-section .doc-poster-of {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
       }
 
       #documentary-section .doc-info {
         max-width: 100%;
+        width: 100%;
         padding-right: 0;
       }
 
-      /* خط عمودی در موبایل به خط افقی کوتاه زیر تیتر تبدیل می‌شود */
+      /* خط افقی طلایی */
       #documentary-section .doc-info::before {
         right: 50%;
         transform: translateX(50%);
-        top: auto;
-        bottom: -14px;
-        width: 110px;
+        top: -14px;
+        bottom: auto;
+        width: 95px;
         height: 3px;
-        background: radial-gradient(circle, var(--gold-primary) 25%, rgba(212, 175, 55, 0.4) 70%, transparent 100%);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold-primary),
+          var(--gold-light),
+          var(--gold-primary),
+          transparent
+        );
       }
 
       #documentary-section .doc-title {
         font-size: 1.75rem;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
+        line-height: 1.4;
       }
 
       #documentary-section .doc-tagline {
         justify-content: center;
+        font-size: 0.96rem;
+        margin-bottom: 16px;
       }
 
       #documentary-section .doc-tagline::after {
@@ -1713,46 +1811,92 @@
       }
 
       #documentary-section .doc-desc {
-        font-size: 0.93rem;
-        padding: 0 4px;
+        font-size: 0.92rem;
+        line-height: 2;
+        padding: 0 7px;
+        text-align: center;
+        margin-bottom: 16px;
+      }
+
+      #documentary-section .doc-credits {
+        justify-content: center;
+        font-size: 0.78rem;
+        padding: 7px 13px;
+        margin-bottom: 24px;
+        max-width: 100%;
+        box-sizing: border-box;
       }
 
       #documentary-section .doc-btn {
         width: 100%;
-        max-width: 320px;
-        justify-content: center;
+        max-width: 315px;
+        min-height: 50px;
+        padding: 12px 24px;
+        box-sizing: border-box;
+        font-size: 0.95rem;
+        margin: 0 auto;
+      }
+
+      #documentary-section .doc-btn svg {
+        width: 19px;
+        height: 19px;
       }
     }
   </style>
 
-  <!-- بکگراند تار -->
+  <!-- بکگراند -->
   <div class="doc-bg doc-bg-desktop"></div>
   <div class="doc-bg doc-bg-mobile"></div>
 
   <div class="doc-content">
 
-    <!-- کارت پوستر: دسکتاپ عمودی (galal-of) / موبایل افقی (galal-am) -->
+    <!-- کارت پوستر -->
+    <!-- دسکتاپ: galal-am = عمودی -->
+    <!-- موبایل: galal-of = افقی -->
     <div class="doc-poster-card">
-      <img src="pic/galal-of.webp" alt="پوستر عمودی مستند عروس یافا - امیرعلی گل‌چینی" class="doc-poster doc-poster-of" loading="lazy" />
-      <img src="pic/galal-am.webp" alt="پوستر مستند عروس یافا - امیرعلی گل‌چینی" class="doc-poster doc-poster-am" loading="lazy" />
+      <img
+        src="pic/galal-am.webp"
+        alt="پوستر عمودی مستند عروس یافا - امیرعلی گل‌چینی"
+        class="doc-poster doc-poster-am"
+        loading="lazy"
+      />
+
+      <img
+        src="pic/galal-of.webp"
+        alt="پوستر افقی مستند عروس یافا - امیرعلی گل‌چینی"
+        class="doc-poster doc-poster-of"
+        loading="lazy"
+      />
     </div>
 
     <!-- معرفی و دکمه ورود -->
     <div class="doc-info">
       <h2 class="doc-title">عروس یافا</h2>
+
       <p class="doc-tagline">یک زن، یک عملیات، یک ملت</p>
+
       <p class="doc-desc">
         این مستند پرتره‌ای از «دلال مغربی» و عملیات ساحل در سال ۱۹۷۸ است؛
         عملیاتی مهم که به یکی از مشهورترین رویدادهای تاریخ مبارزات فلسطینی
         تبدیل شد.
       </p>
+
       <p class="doc-credits">
-        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        <svg viewBox="0 0 24 24">
+          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+        </svg>
         کارگردانان: امیرعلی گل‌چینی، مهدی چراغ
       </p>
 
-      <a href="https://www.aparat.com/v/zaa9x89?playlist=26165270&refererRef=channel_page" target="_blank" rel="noopener" class="doc-btn">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <a
+        href="https://www.aparat.com/v/zaa9x89?playlist=26165270&refererRef=channel_page"
+        target="_blank"
+        rel="noopener"
+        class="doc-btn"
+      >
+        <svg viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
         مشاهده مستند
       </a>
     </div>
@@ -1760,10 +1904,6 @@
   </div>
 </section>
 <!-- ================== پایان ماژول ۶ ================== -->
-  
-
-
-
 
 
 
