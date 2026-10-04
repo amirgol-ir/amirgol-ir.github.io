@@ -897,7 +897,7 @@
       const ctx = dustCanvas.getContext('2d');
 
       // Calculate dynamic scroll height so adding more cards automatically expands scroll travel
-      const CARD_VERTICAL_GAP = 160; // Clean vertical offset preventing overlap
+      const CARD_VERTICAL_GAP = 190; // Clean vertical offset preventing overlap
       const TOTAL_CARDS = EXPERIENCE_DATA.length;
       const calculatedScrollVh = Math.max(380, 200 + (TOTAL_CARDS * 70));
       container.style.height = `${calculatedScrollVh}vh`;
