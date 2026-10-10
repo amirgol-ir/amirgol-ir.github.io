@@ -1906,6 +1906,21 @@
 <!-- ================== پایان ماژول ۶ ================== -->
 
 
+<!-- ======================================================== -->
+<!-- ماژول ۷: ردپای من در آثار (نمونه‌کارهای ویدیویی)          -->
+<!-- ======================================================== -->
+<section id="portfolio-section" style="position: relative; width: 100%; background: #ffffff;">
+  <iframe
+    id="portfolioFrame"
+    src="./sample_video/sample_video.html"
+    title="ردپای من در آثار"
+    scrolling="no"
+    style="width: 100%; border: none; display: block;"
+  ></iframe>
+</section>
+
+<!-- ================== پایان ماژول 7 ================== -->
+  
 
 
 
@@ -2217,6 +2232,18 @@
   </div>
 </footer>
 <!-- ================= END: LUXURY CRIMSON FOOTER ================= -->
+
+<script>
+  // هماهنگی خودکار ارتفاع ماژول ۷ با محتوای داخلی در موبایل و سیستم
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.type === 'portfolio-resize') {
+      const pFrame = document.getElementById('portfolioFrame');
+      if (pFrame && e.data.height) {
+        pFrame.style.height = e.data.height + 'px';
+      }
+    }
+  });
+</script>
   
 </body>
 </html>
