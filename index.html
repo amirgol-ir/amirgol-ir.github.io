@@ -2234,12 +2234,17 @@
 <!-- ================= END: LUXURY CRIMSON FOOTER ================= -->
 
 <script>
-  // هماهنگی خودکار ارتفاع ماژول ۷ با محتوای داخلی در موبایل و سیستم
   window.addEventListener('message', function (e) {
     if (e.data && e.data.type === 'portfolio-resize') {
       const pFrame = document.getElementById('portfolioFrame');
-      if (pFrame && e.data.height) {
-        pFrame.style.height = e.data.height + 'px';
+      if (pFrame && e.data.height) { pFrame.style.height = e.data.height + 'px'; }
+    }
+    if (e.data && e.data.type === 'portfolio-scroll-to') {
+      const pFrame = document.getElementById('portfolioFrame');
+      if (pFrame) {
+        const frameTop = pFrame.getBoundingClientRect().top + window.scrollY;
+        const targetScroll = frameTop + e.data.y - (window.innerHeight / 2);
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
       }
     }
   });
