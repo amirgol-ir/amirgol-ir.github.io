@@ -1,0 +1,6 @@
+# تنظیمات GitHub Pages
+# فایل‌های زیر فقط برای استفاده روی کامپیوتر خودتان هستند و روی سایت منتشر نمی‌شوند
+exclude:
+  - README.md
+  - "sample_video/graphic/*.ps1"
+  - "sample_video/graphic/*.bat"
