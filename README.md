@@ -1,1 +1,0 @@
-# amirgol-ir.github.io
