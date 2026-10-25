@@ -1,0 +1,358 @@
+{
+  "title": "ردپای من در دنیای",
+  "title_highlight": "خلاقیت",
+  "description": "گزیده‌ای از تجربه‌ها، تصویرها و روایت‌هایی که خلق کرده‌ام",
+  "categories": [
+    {
+      "id": "ai",
+      "type": "video",
+      "icon": "ai",
+      "title": "روایت‌های هوش مصنوعی",
+      "subtitle": "AI Storytelling & Media",
+      "cta_url": "https://ble.ir/join/ADDP3tHMC4",
+      "cta_text": "برای مشاهده نمونه‌های بیشتر کلیک کنید",
+      "items": [
+        {
+          "title": "ساخت چهره و صوت شهید رئیسی با AI",
+          "modal_title": "",
+          "desc": "بازآفرینی فوق‌واقع‌گرایانه چهره، شبیه‌سازی دقیق طنین صدا و همگام‌سازی لب (Lip-sync) با مدل‌های پیشرفته هوش مصنوعی",
+          "cover": "sample_video/ai/cover-ai-01.webp",
+          "cover_alt": "ساخت چهره و صوت شهید رئیسی با AI",
+          "tag": "بازآفرینی صوت و تصویر",
+          "year": "۱۴۰۴",
+          "video": "https://www.aparat.com/video/video/embed/videohash/sgbd0ih/vt/frame",
+          "duration": "01:07"
+        },
+        {
+          "title": "ساخت چهره شهید سلیمانی با AI",
+          "modal_title": "",
+          "desc": "مدل‌سازی سینمایی چهره، شبیه‌سازی عمق نگاه و پردازش بافت پوست با تکنیک‌های نوین دیپ‌فیک و هوش مصنوعی مولد",
+          "cover": "sample_video/ai/cover-ai-02.webp",
+          "cover_alt": "ساخت چهره شهید سلیمانی با AI",
+          "tag": "بازآفرینی چهره",
+          "year": "۱۴۰۴",
+          "video": "https://www.aparat.com/video/video/embed/videohash/rdkh9h7/vt/frame",
+          "duration": "01:03"
+        },
+        {
+          "title": "تیزر تبلیغاتی پنل خورشیدی با AI",
+          "modal_title": "ساخت تیزر تبلیغاتی پنل خورشیدی با AI",
+          "desc": "تولید تیزر صنعتی و تبلیغاتی مزارع انرژی خورشیدی با نورپردازی داینامیک و رندرهای واقع‌گرایانه هوش مصنوعی مولد",
+          "cover": "sample_video/ai/cover-ai-03.webp",
+          "cover_alt": "ساخت تیزر تبلیغاتی پنل خورشیدی با AI",
+          "tag": "تیزر صنعتی و انرژی",
+          "year": "۱۴۰۵",
+          "video": "https://www.aparat.com/video/video/embed/videohash/szg331v/vt/frame",
+          "duration": "00:32"
+        },
+        {
+          "title": "ساخت انیمیشن با AI",
+          "modal_title": "",
+          "desc": "طراحی مفهومی کاراکتر، کارگردانی هنری و متحرک‌سازی فریم‌به‌فریم سکانس‌های انیمیشنی با هوش مصنوعی مولد",
+          "cover": "sample_video/ai/cover-ai-04.webp",
+          "cover_alt": "ساخت انیمیشن با AI",
+          "tag": "انیمیشن و کاراکتر",
+          "year": "۱۴۰۵",
+          "video": "https://www.aparat.com/video/video/embed/videohash/iouzdqf/vt/frame",
+          "duration": "00:40"
+        },
+        {
+          "title": "ساخت تبلیغات کفش با AI",
+          "modal_title": "",
+          "desc": "تیزر تجاری مدرن محصول، شبیه‌سازی فیزیک و متریال کفش با جلوه‌های بصری پویا و مدل‌های تولید ویدیو AI",
+          "cover": "sample_video/ai/cover-ai-05.webp",
+          "cover_alt": "ساخت تبلیغات کفش با AI",
+          "tag": "تبلیغات تجاری و محصول",
+          "year": "۱۴۰۵",
+          "video": "https://www.aparat.com/video/video/embed/videohash/jrhu5l5/vt/frame",
+          "duration": "00:34"
+        },
+        {
+          "title": "ساخت چهره مشاهیر با AI",
+          "modal_title": "",
+          "desc": "احیا و متحرک‌سازی دیجیتال پرتره مشاهیر و مفاخر تاریخی با میمیک طبیعی صورت و فضاسازی هوش مصنوعی",
+          "cover": "sample_video/ai/cover-ai-06.webp",
+          "cover_alt": "ساخت چهره مشاهیر با AI",
+          "tag": "بازآفرینی دیجیتال",
+          "year": "۱۴۰۵",
+          "video": "https://www.aparat.com/video/video/embed/videohash/tvuu2aa/vt/frame",
+          "duration": "01:19"
+        },
+        {
+          "title": "اصلاح ویدیو با هوش مصنوعی",
+          "modal_title": "",
+          "desc": "ترمیم و بازسازی تخصصی ویدیو، ارتقای رزولوشن (Video Upscale) و بازیابی جزئیات و شفافیت تصویر با هوش مصنوعی",
+          "cover": "sample_video/ai/cover-ai-07.webp",
+          "cover_alt": "اصلاح ویدیو با هوش مصنوعی",
+          "tag": "ترمیم و ارتقای ویدیو",
+          "year": "۱۴۰۵",
+          "video": "https://www.aparat.com/video/video/embed/videohash/mviy7b8/vt/frame",
+          "duration": "00:08"
+        }
+      ],
+      "cta_title": "کانال بله - مشاهده نمونه‌های بیشتر"
+    },
+    {
+      "id": "editing",
+      "type": "video",
+      "icon": "editing",
+      "title": "تدوین و روایت تصویر",
+      "subtitle": "Video Editing & Storytelling",
+      "cta_url": "",
+      "cta_text": "",
+      "items": [
+        {
+          "title": "تیزر سازمان نوسازی مدارس",
+          "modal_title": "",
+          "desc": "تیزر سازمان نوسازی مدارس در سیستان و بلوچستان؛ روایت تلاش‌های محرومیت‌زدایی و احداث فضاهای آموزشی نوین",
+          "cover": "sample_video/editing/cover-edit-01.webp",
+          "cover_alt": "تیزر سازمان نوسازی مدارس",
+          "tag": "تیزر سازمانی",
+          "year": "۱۴۰۳",
+          "video": "https://www.aparat.com/video/video/embed/videohash/ylh0391/vt/frame",
+          "duration": "02:55"
+        },
+        {
+          "title": "تیزر تبلیغاتی روایت انسان",
+          "modal_title": "",
+          "desc": "ساخت تیزر تبلیغاتی مجموعه اندیشه‌ای روایت انسان با تدوین ریتمیک، برش‌های روایی پویا و تلفیق موسیقی متناسب",
+          "cover": "sample_video/editing/cover-edit-02.webp",
+          "cover_alt": "تیزر تبلیغاتی روایت انسان",
+          "tag": "تیزر تبلیغاتی",
+          "year": "۱۴۰۰",
+          "video": "https://www.aparat.com/video/video/embed/videohash/ltia412/vt/frame",
+          "duration": "02:24"
+        },
+        {
+          "title": "تدوین مستند «با حفظ سمت» (قسمت ۱)",
+          "modal_title": "نمونه تدوین مستند با حفظ سمت (قسمت 1)",
+          "desc": "تدوین مجموعه ۵ قسمتی مستند با حفظ سمت؛ هماهنگ‌سازی تصاویر آرشیوی تاریخی، مصاحبه‌های چنددوربینه و کالرگریدینگ",
+          "cover": "sample_video/editing/cover-edit-03.webp",
+          "cover_alt": "نمونه تدوین مستند با حفظ سمت",
+          "tag": "مستند تلویزیونی",
+          "year": "۱۳۹۹",
+          "video": "https://www.aparat.com/video/video/embed/videohash/xux1b65/vt/frame",
+          "duration": "10:32"
+        },
+        {
+          "title": "شهید رئیسی و دانشگاه",
+          "modal_title": "",
+          "desc": "تولید و تدوین کلیپ به سفارش مرکز اسلام ناب؛ بازخوانی بیانات و نگاه راهبردی شهید آیت‌الله رئیسی در فضای دانشگاهی",
+          "cover": "sample_video/editing/cover-edit-04.webp",
+          "cover_alt": "شهید رئیسی و دانشگاه",
+          "tag": "کلیپ تبیینی",
+          "year": "۱۴۰۳",
+          "video": "https://www.aparat.com/video/video/embed/videohash/bsupx3z/vt/frame",
+          "duration": "01:16"
+        },
+        {
+          "title": "دریچه اسلام ناب ۱۴۰۳",
+          "modal_title": "دریچه اسلام ناب 1403",
+          "desc": "حاشیه‌نگاری پویا از دوره اسلام ناب ۱۴۰۳؛ انعکاس شور و نشاط جوانان در قالب تدوین سریع، کات‌های ریتمیک و قاب‌های مستند",
+          "cover": "sample_video/editing/cover-edit-05.webp",
+          "cover_alt": "دریچه اسلام ناب 1403",
+          "tag": "مستند رویداد",
+          "year": "۱۴۰۳",
+          "video": "https://www.aparat.com/video/video/embed/videohash/ekd8ch8/vt/frame",
+          "duration": "00:50"
+        },
+        {
+          "title": "ریلز اینستاگرامی روایت انسان",
+          "modal_title": "",
+          "desc": "ساخت ریلز اینستاگرامی به سفارش مجموعه روایت انسان با تیترنویسی پویا، ریتم جذاب و تناسب کامل با شبکه‌های اجتماعی",
+          "cover": "sample_video/editing/cover-edit-06.webp",
+          "cover_alt": "ریلز اینستاگرامی روایت انسان",
+          "tag": "سوشال مدیا",
+          "year": "۱۴۰۴",
+          "video": "https://www.aparat.com/video/video/embed/videohash/xkr79f6/vt/frame",
+          "duration": "02:48"
+        },
+        {
+          "title": "تیزر شرکت نویان و همراه اول",
+          "modal_title": "تیزر شرکت نویان",
+          "desc": "ساخت تیزر شرکت نویان و آکادمی همراه اول؛ معرفی خدمات فناورانه با ریتم مدرن تبلیغاتی و فضاسازی تجاری",
+          "cover": "sample_video/editing/cover-edit-07.webp",
+          "cover_alt": "تیزر شرکت نویان",
+          "tag": "تیزر تبلیغاتی",
+          "year": "۱۴۰۳",
+          "video": "https://www.aparat.com/video/video/embed/videohash/wxopx7s/vt/frame",
+          "duration": "02:39"
+        },
+        {
+          "title": "تیزر تبلیغاتی روایت انسان (نسخه ۲)",
+          "modal_title": "تیزر تبلیغاتی روایت انسان",
+          "desc": "ساخت تیزر تبلیغاتی مجموعه روایت انسان؛ ترکیب کات‌های مفهومی، ضرب‌آهنگ دراماتیک و طراحی صدای فراگیر سینمایی",
+          "cover": "sample_video/editing/cover-edit-08.webp",
+          "cover_alt": "تیزر تبلیغاتی روایت انسان",
+          "tag": "تیزر تبلیغاتی",
+          "year": "۱۴۰۱",
+          "video": "https://www.aparat.com/video/video/embed/videohash/wrde86r/vt/frame",
+          "duration": "02:36"
+        },
+        {
+          "title": "شهید بهشتی در مورد دانشجو",
+          "modal_title": "کلیپ شهید بهشتی در مورد دانشجو",
+          "desc": "تولید به سفارش مرکز اسلام ناب؛ تدوین کلام ماندگار شهید مظلوم بهشتی درباره رسالت آگاهی‌بخشی و نقش حیاتی دانشجو در جامعه",
+          "cover": "sample_video/editing/cover-edit-09.webp",
+          "cover_alt": "کلیپ شهید بهشتی در مورد دانشجو",
+          "tag": "کلیپ تاریخی",
+          "year": "۱۴۰۰",
+          "video": "https://www.aparat.com/video/video/embed/videohash/yey4p36/vt/frame",
+          "duration": "01:09"
+        }
+      ]
+    },
+    {
+      "id": "motion",
+      "type": "video",
+      "icon": "motion",
+      "title": "موشن‌گرافیک و جلوه‌های بصری",
+      "subtitle": "Motion Graphics & VFX",
+      "cta_url": "",
+      "cta_text": "",
+      "items": [
+        {
+          "title": "موشن برگزیده جشنواره",
+          "modal_title": "",
+          "desc": "اثر برگزیده جشنواره؛ طراحی موشن‌گرافیک پویا با ریتم تند، جلوه‌های نوری چشم‌نواز و ترکیب‌بندی خلاقانه",
+          "cover": "sample_video/motion/cover-motion-01.webp",
+          "cover_alt": "موشن برگزیده جشنواره",
+          "tag": "موشن جشنواره",
+          "year": "۱۴۰۴",
+          "video": "https://www.aparat.com/video/video/embed/videohash/fso0o1k/vt/frame",
+          "duration": "00:15"
+        },
+        {
+          "title": "نقشه فصل ۱ روایت انسان",
+          "modal_title": "نقشه فصل 1 روایت انسان",
+          "desc": "ساخت نقشه مفهومی فصل اول مجموعه روایت انسان در افترافکت؛ انیمیت خطوط، لایه‌های جغرافیایی و جریان داده‌ها",
+          "cover": "sample_video/motion/cover-motion-02.webp",
+          "cover_alt": "نقشه فصل 1 روایت انسان",
+          "tag": "موشن اینفوگرافیک",
+          "year": "۱۴۰۳",
+          "video": "https://www.aparat.com/video/video/embed/videohash/oocts5s/vt/frame",
+          "duration": "01:56"
+        },
+        {
+          "title": "پادکست تصویری و آدیوگرام",
+          "modal_title": "پادکست تصویری",
+          "desc": "تولید پادکست تصویری و آدیوگرام متحرک در افترافکت؛ هماهنگی اکولایزر صوتی، تایتل‌های داینامیک و جلوه‌های بصری",
+          "cover": "sample_video/motion/cover-motion-03.webp",
+          "cover_alt": "پادکست تصویری",
+          "tag": "آدیوگرام و پادکست",
+          "year": "۱۴۰۳",
+          "video": "https://www.aparat.com/video/video/embed/videohash/zdmez8u/vt/frame",
+          "duration": "00:29"
+        },
+        {
+          "title": "موشن معرفی هلدینگ اطلس",
+          "modal_title": "",
+          "desc": "ساخت موشن‌گرافیک معرفی خدمات و دستاوردهای هلدینگ اطلس؛ مدل‌سازی عناصر سازمانی، نورپردازی مدرن و هویت برند",
+          "cover": "sample_video/motion/cover-motion-04.webp",
+          "cover_alt": "موشن معرفی هلدینگ اطلس",
+          "tag": "موشن شرکتی",
+          "year": "۱۴۰۴",
+          "video": "https://www.aparat.com/video/video/embed/videohash/jvht6rf/vt/frame",
+          "duration": "01:56"
+        },
+        {
+          "title": "اسلام انقلابی یا انقلاب اسلامی",
+          "modal_title": "",
+          "desc": "تولید به سفارش مرکز اسلام ناب؛ موشن‌گرافیک تبیینی و مفهومی بر پایه اندیشه‌های شهید مطهری با تایپوگرافی متحرک",
+          "cover": "sample_video/motion/cover-motion-05.webp",
+          "cover_alt": "اسلام انقلابی یا انقلاب اسلامی",
+          "tag": "موشن مفهومی",
+          "year": "۱۴۰۲",
+          "video": "https://www.aparat.com/video/video/embed/videohash/vzv1msb/vt/frame",
+          "duration": "01:20"
+        },
+        {
+          "title": "پوسترموشن دوره اسلام ناب ۱۴۰۱",
+          "modal_title": "پوستر موشن دوره اسلام ناب 1401",
+          "desc": "طراحی و انیمیت پوسترموشن فراخوان ثبت‌نام دوره اسلام ناب ۱۴۰۱ با جلوه‌های بصری پویا و تایتل‌های حرکتی",
+          "cover": "sample_video/motion/cover-motion-06.webp",
+          "cover_alt": "پوستر موشن دوره اسلام ناب 1401",
+          "tag": "پوسترموشن",
+          "year": "۱۴۰۱",
+          "video": "https://www.aparat.com/video/video/embed/videohash/mrc8dtv/vt/frame",
+          "duration": "00:14"
+        }
+      ]
+    },
+    {
+      "id": "graphic",
+      "type": "gallery",
+      "icon": "graphic",
+      "title": "طراحی گرافیک و هویت بصری",
+      "subtitle": "Graphic Design & Visual Identity",
+      "cta_url": "",
+      "cta_text": "",
+      "items": [
+        {
+          "title": "طراحی کاتالوگ و بروشور شرکت نانونارین طب",
+          "modal_title": "",
+          "desc": "صفحه‌آرایی تخصصی ژورنال و کاتالوگ محصولات دارویی نانو، طراحی جدول و اینفوگرافیک‌های صنعتی",
+          "cover": "sample_video/graphic/covers/logo-01.webp",
+          "cover_alt": "لوگو نانونارین طب",
+          "tag": "کاتالوگ و صفحه‌آرایی",
+          "year": "۱۴۰۵",
+          "images": [
+            "sample_video/graphic/project-01/1.webp",
+            "sample_video/graphic/project-01/2.webp",
+            "sample_video/graphic/project-01/3.webp",
+            "sample_video/graphic/project-01/4.webp",
+            "sample_video/graphic/project-01/5.webp",
+            "sample_video/graphic/project-01/6.webp"
+          ]
+        },
+        {
+          "title": "طراحی بسته‌بندی و هویت بصری صنایع اوژن",
+          "modal_title": "",
+          "desc": "طراحی برچسب و بسته‌بندی محصولات صنعتی، قالب‌های چاپ و هویت برند صنایع شیمیایی اوژن",
+          "cover": "sample_video/graphic/covers/logo-02.webp",
+          "cover_alt": "لوگو صنایع اوژن",
+          "tag": "طراحی بسته‌بندی",
+          "year": "۱۴۰۳",
+          "images": [
+            "sample_video/graphic/project-02/1.webp",
+            "sample_video/graphic/project-02/2.webp",
+            "sample_video/graphic/project-02/3.webp",
+            "sample_video/graphic/project-02/4.webp"
+          ]
+        },
+        {
+          "title": "طراحی گرافیک و کمپین‌های مجموعه چهارسوق",
+          "modal_title": "",
+          "desc": "تولید هویت بصری دیجیتال، پوسترهای سوشال‌مدیا، استوری‌های موضوعی و طراحی پوستر حجره چهارسوق",
+          "cover": "sample_video/graphic/covers/logo-03.webp",
+          "cover_alt": "لوگو مجموعه چهارسوق",
+          "tag": "طراحی پوستر و سوشال",
+          "year": "۱۴۰۱",
+          "images": [
+            "sample_video/graphic/project-03/1.webp",
+            "sample_video/graphic/project-03/2.webp",
+            "sample_video/graphic/project-03/3.webp",
+            "sample_video/graphic/project-03/4.webp"
+          ]
+        },
+        {
+          "title": "تصویرسازی و نقشه راه دوره هادی",
+          "modal_title": "",
+          "desc": "طراحی تایپوگرافی، آیکون‌گرافی و نگاشت گرافیکی مراحل مسیر آموزشی دوره تخصصی هادی",
+          "cover": "sample_video/graphic/covers/logo-04.webp",
+          "cover_alt": "لوگو دوره هادی",
+          "tag": "تصویرسازی و گرافیک",
+          "year": "۱۴۰۰",
+          "images": [
+            "sample_video/graphic/project-04/1.webp",
+            "sample_video/graphic/project-04/2.webp",
+            "sample_video/graphic/project-04/3.webp",
+            "sample_video/graphic/project-04/4.webp",
+            "sample_video/graphic/project-04/5.webp",
+            "sample_video/graphic/project-04/6.webp"
+          ]
+        }
+      ]
+    }
+  ]
+}

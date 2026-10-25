@@ -1,0 +1,79 @@
+{
+  "title": "مهارت‌های تخصصی",
+  "columns": [
+    [
+      {
+        "name": "Premiere Pro",
+        "percent": 95,
+        "icon": "pr",
+        "label": "Pr",
+        "sway": 1
+      },
+      {
+        "name": "After Effects",
+        "percent": 80,
+        "icon": "ae",
+        "label": "Ae",
+        "sway": 2
+      },
+      {
+        "name": "Photoshop",
+        "percent": 80,
+        "icon": "ps",
+        "label": "Ps",
+        "sway": 4
+      },
+      {
+        "name": "DaVinci Resolve",
+        "percent": 50,
+        "icon": "dv",
+        "label": "",
+        "sway": 3
+      },
+      {
+        "name": "Illustrator",
+        "percent": 55,
+        "icon": "ai",
+        "label": "Ai",
+        "sway": 5
+      }
+    ],
+    [
+      {
+        "name": "AI Photo Generation",
+        "percent": 90,
+        "icon": "aip",
+        "label": "",
+        "sway": 5
+      },
+      {
+        "name": "AI Video Generation",
+        "percent": 80,
+        "icon": "aiv",
+        "label": "",
+        "sway": 1
+      },
+      {
+        "name": "AI Music Generation",
+        "percent": 60,
+        "icon": "aim",
+        "label": "",
+        "sway": 2
+      },
+      {
+        "name": "تصویربرداری / Videography",
+        "percent": 50,
+        "icon": "cam",
+        "label": "",
+        "sway": 4
+      },
+      {
+        "name": "KineMaster",
+        "percent": 70,
+        "icon": "km",
+        "label": "",
+        "sway": 3
+      }
+    ]
+  ]
+}
