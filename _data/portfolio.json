@@ -68,17 +68,6 @@
           "duration": "00:32"
         },
         {
-          "title": "ساخت چهره مشاهیر با AI",
-          "modal_title": "",
-          "desc": "احیا و متحرک‌سازی دیجیتال پرتره مشاهیر و مفاخر تاریخی با میمیک طبیعی صورت و فضاسازی هوش مصنوعی",
-          "cover": "sample_video/ai/cover-ai-06.webp",
-          "cover_alt": "ساخت چهره مشاهیر با AI",
-          "tag": "بازآفرینی دیجیتال",
-          "year": "۱۴۰۵",
-          "video": "https://www.aparat.com/video/video/embed/videohash/tvuu2aa/vt/frame",
-          "duration": "01:19"
-        },
-        {
           "title": "اصلاح ویدیو با هوش مصنوعی",
           "modal_title": "",
           "desc": "ترمیم و بازسازی تخصصی ویدیو، ارتقای رزولوشن (Video Upscale) و بازیابی جزئیات و شفافیت تصویر با هوش مصنوعی",
@@ -88,6 +77,17 @@
           "year": "۱۴۰۵",
           "video": "https://www.aparat.com/video/video/embed/videohash/mviy7b8/vt/frame",
           "duration": "00:08"
+        },
+        {
+          "title": "ساخت چهره مشاهیر با AI",
+          "modal_title": "",
+          "desc": "احیا و متحرک‌سازی دیجیتال پرتره مشاهیر و مفاخر تاریخی با میمیک طبیعی صورت و فضاسازی هوش مصنوعی",
+          "cover": "sample_video/ai/cover-ai-06.webp",
+          "cover_alt": "ساخت چهره مشاهیر با AI",
+          "tag": "بازآفرینی دیجیتال",
+          "year": "۱۴۰۵",
+          "video": "https://www.aparat.com/video/video/embed/videohash/tvuu2aa/vt/frame",
+          "duration": "01:19"
         }
       ],
       "cta_title": "کانال بله - مشاهده نمونه‌های بیشتر"
